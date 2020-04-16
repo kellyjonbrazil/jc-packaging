@@ -12,3 +12,4 @@ Cargo.lock
 dist/
 linux/
 osx/
+pyoxidizer/build
