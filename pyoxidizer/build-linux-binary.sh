@@ -7,9 +7,6 @@
 #         yum install devtoolset-3-gcc devtoolset-3-gcc-c++
 #         update-alternatives --install /usr/bin/gcc-4.9 gcc-4.9 /opt/rh/devtoolset-3/root/usr/bin/gcc 10
 #         update-alternatives --install /usr/bin/g++-4.9 g++-4.9 /opt/rh/devtoolset-3/root/usr/bin/g++ 10
-#
-# OSX Build Requirements:
-#     TODO
 
 # this enables gcc v4.9
 scl enable devtoolset-3 bash
