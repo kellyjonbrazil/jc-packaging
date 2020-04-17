@@ -11,4 +11,15 @@
 # run this first to enable gcc v4.9
 # scl enable devtoolset-3 bash
 
+if [[ $1 == "" ]]; then
+    echo "Please enter the version to build."
+    exit
+fi
+
+VERSION=$1
+
 pyoxidizer build --release
+
+cd build/x86_64-unknown-linux-gnu/release/exe
+sha256sum jc > ~/jc-"${VERSION}".sha256
+tar -czvf ~/jc-"${VERSION}".tar.gz jc
