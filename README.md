@@ -27,19 +27,16 @@ DEB, RPM, and macOS PKG files are built from PyPi. These packages may not always
 | 1.10.5    | [jc-1.10.5-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.10.5-1.x86_64.rpm)  | fd31f3be61e07aa277d1c0921ce46efd19a4ab2b211718bca377e6ff35b968c0  |
 
 
-#### PKG (macOS)
-Coming Soon!
-
 ### Binaries
 #### Linux (Fedora, RHEL, CentOS, Debian, Ubuntu)
 
-| Version   | File                                                                                                 | SHA256 Hash                                                       |
+| Version   | File                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | 1.10.5    | [jc-1.10.5-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.10.5-linux.tar.gz)  | 255eb9549ae90b2f96b316e29100208c466844cb13cbe9659770c6176fa4a502  |
 
 
 #### macOS (Mojave and higher)
 
-| Version   | File                                                                                                   | SHA256 Hash                                                       |
+| Version   | File                                                                                                   | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | 1.10.5    | [jc-1.10.5-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.10.5-darwin.tar.gz)  | e58c68cb7483049de686d9db623b19d24ff1c81bcfb00af64bd54652fcbb02f9  |
