@@ -11,7 +11,7 @@ $ pip3 install --upgrade jc
 ```
 
 ### Packages
-DEB, RPM, and macOS PKG files are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
+DEB and RPM packages are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
 #### DEB (Debian, Ubuntu)
 
