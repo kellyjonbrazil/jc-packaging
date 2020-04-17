@@ -24,9 +24,11 @@ URL="https://github.com/kellyjonbrazil/jc"
 MAINTAINER="kellyjonbrazil@gmail.com"
 
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
-rm linux/*
-curl -o linux/"${NAME}" https://jc-packages.s3-us-west-1.amazonaws.com/bin/linux/v"${VERSION}"/jc
-chmod +x linux/"${NAME}"
+rm -rf linux/*
+curl -o linux/jc-"${VERSION}"-linux.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux.tar.gz
+tar -xvf linux/jc-"${VERSION}"-linux.tar.gz -C linux/
+rm linux/*.tar.gz
+chmod +x linux/jc
 
 fpm \
     --verbose \
