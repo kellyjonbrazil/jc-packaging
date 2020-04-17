@@ -1,5 +1,5 @@
 # JC Packages
-`jc` is a command line tool to JSONify the output of dozens of commands and file types. For more information, see the project on GitHub at https://github.com/kellyjonbrazil/jc
+`jc` is a command line tool to JSONify the output of dozens of commands and file types. For more information, please see the project on GitHub at https://github.com/kellyjonbrazil/jc
 
 ## Installing JC
 There are multiple ways to install `jc`. 
