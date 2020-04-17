@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+# JC Packages
+`jc` is a command line tool to JSONify the output of dozens of commands and file types. For more information, see the project on GitHub at https://github.com/kellyjonbrazil/jc
 
-You can use the [editor on GitHub](https://github.com/kellyjonbrazil/jc-packaging/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Installing JC
+There are multiple ways to install `jc`. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Pip (macOS, linux, unix, Windows)
+For the most up-to-date version and the most cross-platform option, use `pip` or `pip3` to download and install `jc` directly from [PyPi](https://pypi.org/project/jc/)
+```
+$ pip3 install --upgrade jc
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Packages
+DEB, RPM, and macOS PKG files are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
-### Jekyll Themes
+### DEB (Debian, Ubuntu)
+```
+$ curl -O https://jc-packages.s3-us-west-1.amazonaws.com/latest/jc.deb
+$ sudo dpkg -i jc.deb
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kellyjonbrazil/jc-packaging/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### RPM (Fedora, RHEL, CentOS)
+```
+$ curl -O https://jc-packages.s3-us-west-1.amazonaws.com/latest/jc.rpm
+$ sudo rpm -i jc.rpm
+```
 
-### Support or Contact
+### PKG (macOS)
+Coming Soon!
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Binaries
+#### Linux (Fedora, RHEL, CentOS, Debian, Ubuntu)
+```
+$ curl -O https://jc-packages.s3-us-west-1.amazonaws.com/bin/linux/latest/jc
+```
+#### macOS
+Coming soon!
