@@ -13,19 +13,19 @@ $ pip3 install --upgrade jc
 ### Packages
 DEB, RPM, and macOS PKG files are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
-### DEB (Debian, Ubuntu)
+#### DEB (Debian, Ubuntu)
 ```
 $ curl -O https://jc-packages.s3-us-west-1.amazonaws.com/latest/jc.deb
 $ sudo dpkg -i jc.deb
 ```
 
-### RPM (Fedora, RHEL, CentOS)
+#### RPM (Fedora, RHEL, CentOS)
 ```
 $ curl -O https://jc-packages.s3-us-west-1.amazonaws.com/latest/jc.rpm
 $ sudo rpm -i jc.rpm
 ```
 
-### PKG (macOS)
+#### PKG (macOS)
 Coming Soon!
 
 ### Binaries
