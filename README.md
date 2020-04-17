@@ -14,12 +14,14 @@ $ pip3 install --upgrade jc
 DEB, RPM, and macOS PKG files are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
 #### DEB (Debian, Ubuntu)
+
 | Version   | File                                                                                             |
 |-----------|--------------------------------------------------------------------------------------------------|
 | 1.10.5    | [jc-1.10.5-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.10.5-1.x86_64.deb)  | 
 
 
 #### RPM (Fedora, RHEL, CentOS)
+
 | Version   | File                                                                                             |
 |-----------|--------------------------------------------------------------------------------------------------|
 | 1.10.5    | [jc-1.10.5-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.10.5-1.x86_64.rpm)  |
@@ -30,6 +32,7 @@ Coming Soon!
 
 ### Binaries
 #### Linux (Fedora, RHEL, CentOS, Debian, Ubuntu)
+
 | Version   | File                                                                                                 | SHA256 Hash                                                       |
 |-----------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | 1.10.5    | [jc-1.10.5-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.10.5-linux.tar.gz)  | 255eb9549ae90b2f96b316e29100208c466844cb13cbe9659770c6176fa4a502  |
