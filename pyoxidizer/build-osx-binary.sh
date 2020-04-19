@@ -10,6 +10,7 @@ fi
 
 VERSION=$1
 
+export MACOSX_DEPLOYMENT_TARGET=10.11
 pyoxidizer build --release
 
 
