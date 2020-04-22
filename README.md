@@ -2,7 +2,7 @@
 `jc` is a command line tool that will JSONify the output of dozens of commands and file types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
 ## Installing JC
-There are several ways to get `jc`. You can install via pip, deb or rpm packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
+There are several ways to get `jc`. You can install via `pip`, `brew`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
 
 ### Pip (macOS, linux, unix, Windows)
 For the most up-to-date version and the most cross-platform option, use `pip` or `pip3` to download and install `jc` directly from [PyPi](https://pypi.org/project/jc/)
@@ -12,6 +12,11 @@ For the most up-to-date version and the most cross-platform option, use `pip` or
 
 ```
 $ pip3 install --upgrade jc
+```
+
+### Brew (macOS)
+```
+$ brew install jc
 ```
 
 ### Packages
