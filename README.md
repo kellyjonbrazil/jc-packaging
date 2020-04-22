@@ -15,6 +15,7 @@ $ pip3 install --upgrade jc
 ```
 
 ### Brew (macOS)
+Homebrew packages are built from PyPi. These packages may not always be on the very latect `jc` version, but are regularly updated. You may run into a conflict if you try to install via `pip` and `brew` on the same system simultaneously.
 ```
 $ brew install jc
 ```
