@@ -13,3 +13,9 @@ dist/
 linux/
 osx/
 pyoxidizer/build
+rpmbuild/BUILD
+rpmbuild/BUILDROOT
+rpmbuild/RPMS
+rpmbuild/SOURCES
+rpmbuild/SRPMS
+
