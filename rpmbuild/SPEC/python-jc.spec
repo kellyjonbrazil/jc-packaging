@@ -18,7 +18,7 @@ BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(xmltodict) >= 0.12
 
 %description
-JSON CLI output utilityjc is used to JSONify the output of many standard linux
+JSON CLI output utility. jc is used to JSONify the output of many standard linux
 cli tools and file types for easier parsing in scripts.
 
 %package -n     python3-%{pypi_name}
@@ -30,7 +30,7 @@ Requires:       python3dist(ruamel.yaml) >= 0.15
 Requires:       python3dist(setuptools)
 Requires:       python3dist(xmltodict) >= 0.12
 %description -n python3-%{pypi_name}
-JSON CLI output utilityjc is used to JSONify the output of many standard linux
+JSON CLI output utility. jc is used to JSONify the output of many standard linux
 cli tools and file types for easier parsing in scripts.
 
 
