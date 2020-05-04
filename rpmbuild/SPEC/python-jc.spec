@@ -50,5 +50,5 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Sat May 02 2020 kbrazil - 1.10.7-1
+* Sat May 02 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.7-1
 - Initial package.
