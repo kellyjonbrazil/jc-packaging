@@ -11,10 +11,13 @@
 # VERSION=$1
 
 # build the SRPM
-pyp2rpm jc --srpm
+# pyp2rpm jc --srpm
 
 # build the RPM
 # rpmbuild --rebuild ~/rpmbuild/SRPMS/python-jc-"${VERSION}"-1.fc32.src.rpm
 
-# build the RPM
-rpmbuild -bb ~/rpmbuild/SPEC/python-jc.spec 
+# get the source - not needed because of %{pypi_source} in spec
+# pip download --no-deps --no-binary :all: jc
+
+# build the RPM and SRPM
+rpmbuild -bb -bs ~/rpmbuild/SPEC/python-jc.spec
