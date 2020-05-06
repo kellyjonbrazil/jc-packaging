@@ -1,4 +1,3 @@
-# Created by pyp2rpm-3.3.4
 %global pypi_name jc
 %global desc JSON CLI output utility. JC is used to JSONify the output of many standard linux \
 CLI tools and file types for easier parsing in scripts.
