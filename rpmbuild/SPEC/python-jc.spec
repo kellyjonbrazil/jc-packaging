@@ -38,9 +38,6 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%check
-%{__python3} setup.py test
-
 %files -n python3-%{pypi_name}
 %doc README.md
 %license LICENSE.md
