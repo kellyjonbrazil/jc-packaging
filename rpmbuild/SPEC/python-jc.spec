@@ -3,7 +3,7 @@
 CLI tools and file types for easier parsing in scripts.
 
 Name:           %{pypi_name}
-Version:        1.10.9
+Version:        1.10.10
 Release:        1%{?dist}
 Summary:        Serialize the output of command line tools and filetypes to structured JSON
 
@@ -45,5 +45,5 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Fri May 08 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.9-1
+* Sat May 09 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.10-1
 - Initial package.
