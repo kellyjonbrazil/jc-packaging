@@ -1,11 +1,11 @@
 %global pypi_name jc
 %global desc JSON CLI output utility. JC is used to JSONify the output of many linux\
-CLI tools and file types for easier parsing in scripts.
+CLI tools and file-types for easier parsing in scripts.
 
 Name:           %{pypi_name}
-Version:        1.10.10
+Version:        1.10.11
 Release:        1%{?dist}
-Summary:        Serialize the output of command line tools and filetypes to structured JSON
+Summary:        Serialize the output of CLI tools and file-types to structured JSON
 
 License:        MIT
 URL:            https://github.com/kellyjonbrazil/jc
@@ -45,5 +45,5 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Sat May 09 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.10-1
+* Mon May 11 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.11-1
 - Initial package.
