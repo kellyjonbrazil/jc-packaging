@@ -3,7 +3,7 @@
 CLI tools and file-types for easier parsing in scripts.
 
 Name:           %{pypi_name}
-Version:        1.10.11
+Version:        1.10.12
 Release:        1%{?dist}
 Summary:        Serialize the output of CLI tools and file-types to structured JSON
 
@@ -21,10 +21,10 @@ BuildRequires:  python3dist(xmltodict) >= 0.12
 %description
 %{desc}
 
-%package -n     python3-%{pypi_name}
+%package -n     %{pypi_name}
 Summary:        %{summary}
 
-%description -n python3-%{pypi_name}
+%description -n %{pypi_name}
 %{desc}
 
 %prep
@@ -37,7 +37,7 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n %{pypi_name}
 %doc README.md
 %license LICENSE.md
 %{_bindir}/jc
@@ -45,5 +45,5 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Mon May 11 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.11-1
+* Mon May 11 2020 Kelly Brazil <kellyjonbrazil@gmail.com> - 1.10.12-1
 - Initial package.
