@@ -21,12 +21,6 @@ BuildRequires:  python3dist(xmltodict) >= 0.12
 %description
 %{desc}
 
-%package -n     python3-%{pypi_name}
-Summary:        %{summary}
-
-%description -n python3-%{pypi_name}
-%{desc}
-
 %prep
 %autosetup -n %{pypi_name}-%{version}
 rm -rf %{pypi_name}.egg-info
@@ -37,7 +31,7 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n %{pypi_name}
+%files
 %doc README.md
 %license LICENSE.md
 %{_bindir}/%{pypi_name}
