@@ -21,10 +21,10 @@ BuildRequires:  python3dist(xmltodict) >= 0.12
 %description
 %{desc}
 
-%package -n     %{pypi_name}
+%package -n     python3-%{pypi_name}
 Summary:        %{summary}
 
-%description -n %{pypi_name}
+%description -n python3-%{pypi_name}
 %{desc}
 
 %prep
