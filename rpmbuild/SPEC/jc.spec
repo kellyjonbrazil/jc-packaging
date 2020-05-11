@@ -40,7 +40,7 @@ rm -rf %{pypi_name}.egg-info
 %files -n %{pypi_name}
 %doc README.md
 %license LICENSE.md
-%{_bindir}/jc
+%{_bindir}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
