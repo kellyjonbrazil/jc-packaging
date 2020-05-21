@@ -1,3 +1,5 @@
+![jc](https://github.com/kellyjonbrazil/jc-packaging/blob/master/images/jc-dig.png)
+
 # JC Packages
 `jc` is a command line tool that will JSONify the output of dozens of commands and file types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
