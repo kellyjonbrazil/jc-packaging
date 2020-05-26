@@ -2,7 +2,7 @@
 
 ![jc](https://github.com/kellyjonbrazil/jc-packaging/raw/master/images/jc-dig.png)
 
-`jc` is a command line tool that will JSONify the output of dozens of commands and file types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
+`jc` JSONifies the output of dozens of commands and file-types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
 ## Installing JC
 There are several ways to get `jc`. You can install via `pip`, `zypper`,  `brew`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
@@ -49,6 +49,8 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 
 ### Binaries
+Linux and macOS binaries are built from PyPi and can be copied to any location in your path and run. These binaries may not always be on the very latest `jc` version, but are regularly updated.
+
 #### Linux (Fedora, RHEL, CentOS, Debian, Ubuntu)
 
 | Version   | File                                                                                                 | SHA256 Hash (binary file)                                         |
