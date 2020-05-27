@@ -7,7 +7,7 @@
 ## Installing JC
 There are several ways to get `jc`. You can install via `pip`, `zypper`,  `brew`, `portsnap`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
 
-#### Pip (macOS, linux, unix, Windows)
+### Pip (macOS, linux, unix, Windows)
 For the most up-to-date version and the most cross-platform option, use `pip` or `pip3` to download and install `jc` directly from [PyPi](https://pypi.org/project/jc/)
 
 ![Pypi](https://img.shields.io/pypi/v/jc.svg)
@@ -17,8 +17,10 @@ For the most up-to-date version and the most cross-platform option, use `pip` or
 $ pip3 install --upgrade jc
 ```
 
+### OS Package Repositories
+
 #### Zypper (openSUSE linux)
-Zypper packages are built from PyPi. These packages may not always be on the very latect `jc` version, but are regularly updated.
+Zypper packages are built from github. These packages may not always be on the very latect `jc` version, but are regularly updated.
 ```
 # zypper install jc
 ```
