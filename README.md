@@ -25,7 +25,7 @@ Zypper packages are built from github. These packages may not always be on the v
 # zypper install jc
 ```
 
-#### nix-env (NixOS linunx)
+#### nix-env (NixOS linux)
 ```
 nix-env -iA nixpkgs.jc
 ```
