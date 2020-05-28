@@ -26,6 +26,7 @@ Zypper packages are built from github. These packages may not always be on the v
 ```
 
 #### nix-env (NixOS linux)
+NixOS packages are built from github. These packages may not always be on the very latect `jc` version, but are regularly updated.
 ```
 nix-env -iA nixpkgs.jc
 ```
