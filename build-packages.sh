@@ -72,9 +72,13 @@ echo
 echo "included files:"
 rpm -q -l -p dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.rpm
 echo
+shasum -a 256 dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.rpm
+echo
 
 echo "DEB info:"
 dpkg --info dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
 echo "included files:"
 dpkg --contents dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
+echo
+shasum -a 256 dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
 echo
