@@ -5,6 +5,7 @@ def make_dist():
 
 def make_exe(dist):
     python_config = PythonInterpreterConfig(
+        filesystem_importer=True,
         run_eval="import jc.cli; jc.cli.main()"
     )
 
