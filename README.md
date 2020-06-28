@@ -13,8 +13,8 @@ For the most up-to-date version and the most cross-platform option, use `pip` or
 ![Pypi](https://img.shields.io/pypi/v/jc.svg)
 
 
-```
-$ pip3 install --upgrade jc
+```bash
+pip3 install jc
 ```
 
 ### OS Package Repositories
