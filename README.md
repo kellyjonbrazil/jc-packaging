@@ -5,7 +5,7 @@
 `jc` JSONifies the output of dozens of commands and file-types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
 ## Installing JC
-There are several ways to get `jc`. You can install via `pip`, `dnf`, `zypper`, `nix-env`, `brew`, `portsnap`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
+There are several ways to get `jc`. You can install via `pip`, `dnf`, `zypper`, `nix-env`, `guix`, `brew`, `portsnap`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
 
 ### Pip (macOS, linux, unix, Windows)
 For the most up-to-date version and the most cross-platform option, use `pip` or `pip3` to download and install `jc` directly from [PyPi](https://pypi.org/project/jc/)
@@ -19,38 +19,14 @@ $ pip3 install --upgrade jc
 
 ### OS Package Repositories
 
-#### Dnf (Fedora linux)
-```
-# dnf install jc
-```
-or
-```
-# dnf --enablerepo=updates-testing install jc
-```
-
-#### Zypper (openSUSE linux)
-Zypper packages are built from github. These packages may not always be on the very latect `jc` version, but are regularly updated.
-```
-# zypper install jc
-```
-
-#### Nix-env (NixOS linux)
-NixOS packages are built from github. These packages may not always be on the very latect `jc` version, but are regularly updated.
-```
-$ nix-env -iA nixpkgs.jc
-```
-
-#### Brew (macOS)
-Homebrew packages are built from PyPi. These packages may not always be on the very latect `jc` version, but are regularly updated.
-```
-$ brew install jc
-```
-
-#### Ports (FreeBSD)
-Ports packages are built from PyPi. These packages may not always be on the very latect `jc` version, but are regularly updated.
-```
-# portsnap fetch update && cd /usr/ports/textproc/py-jc && make install clean
-```
+| OS                    | Command                                                                       | 
+|-----------------------|-------------------------------------------------------------------------------|
+| Fedora linux          | `dnf install jc` or `dnf --enablerepo=updates-testing install jc`             |
+| openSUSE linux        | `zypper install jc`                                                           |
+| NixOS linux           | `nix-env -iA nixpkgs.jc`                                                      |
+| Guix System linux     | `guix install jc`                                                             |
+| MacOS                 | `brew install jc`                                                             |
+| FreeBSD               | `portsnap fetch update && cd /usr/ports/textproc/py-jc && make install clean` |
 
 ### Packages
 DEB and RPM packages are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
