@@ -4,6 +4,8 @@
 
 `jc` JSONifies the output of dozens of commands and file-types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
+Release notes can be found [here]()https://blog.kellybrazil.com/category/jc-news/.
+
 ## Installing JC
 There are several ways to get `jc`. You can install via `pip`, `dnf`, `zypper`, `pacman`, `nix-env`, `guix`, `brew`, `portsnap`, DEB or RPM packages, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
 
