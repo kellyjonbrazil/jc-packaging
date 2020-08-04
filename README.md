@@ -38,6 +38,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.2    | [jc-1.13.2-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.deb)  | 8a152bc3bb8555c3ff0231eb6e719d43cb8797fd458c3356dd10b42ab94473ea  |
 | 1.13.1    | [jc-1.13.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.1-1.x86_64.deb)  | 85374a30efe9c93476686860cf73bee6d31714d163e54b4566d86151379424a5  |
 | 1.11.8    | [jc-1.11.8-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.8-1.x86_64.deb)  | 913f2f78fa892b2f96390976168f8d007f0a01e2c4ad0410d3c0bf8524b93c78  |
 | 1.11.2    | [jc-1.11.2-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.2-1.x86_64.deb)  | 284de328e5cdcf65e119c77300ba34ca6551d1830812abfe615f9f0057458e5c  |
@@ -49,6 +50,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.2    | [jc-1.13.2-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.rpm)  | d91c1eb5aa5f74049f09374c75bebdce27d0ae911349232fb7e3e85b9e399fbc  |
 | 1.13.1    | [jc-1.13.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.1-1.x86_64.rpm)  | f5b7ccc8a7c11d43dbb70ebb8079c0b63343b80c89d3319aa75873b75da13ae7  |
 | 1.11.8    | [jc-1.11.8-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.8-1.x86_64.rpm)  | 0b571e8be375799193d7509b9da59595efb4626fd420f97fed5b66a1685d0322  |
 | 1.11.2    | [jc-1.11.2-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.2-1.x86_64.rpm)  | 1b23d18f03d4f1086c0468d9064b5e45ae1dc7319df376ecec4e792da4cd8b93  |
@@ -63,6 +65,7 @@ Linux and macOS binaries are built from PyPi and can be copied to any location i
 
 | Version   | File                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.2    | [jc-1.13.2-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.2-linux.tar.gz)  | 130be04bb91db84190bef927bf5b97a27738226e4c9f270800990714bac908ee  |
 | 1.13.1    | [jc-1.13.1-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.1-linux.tar.gz)  | 4224e06c470714cb02e3e30df56e710dd55dde6dded488548b13b316d8e7dc31  |
 | 1.11.8    | [jc-1.11.8-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.11.8-linux.tar.gz)  | d3a9133d10e260d99e4fff69d2b3add0ff691d2ec67bff710fd5296546f35966  |
 | 1.11.2    | [jc-1.11.2-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.11.2-linux.tar.gz)  | 2a2faee2eea4ce0a6d10069cd95932bbc5ae4b70c6dc913502edbfe39a3f759f  |
@@ -74,6 +77,7 @@ Linux and macOS binaries are built from PyPi and can be copied to any location i
 
 | Version   | File                                                                                                   | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.2    | [jc-1.13.2-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.2-darwin.tar.gz)  | a7cceb11e522b3a376ec0da1196d8373c6a19f21529553f6c8d0dbc7f8fab29f  |
 | 1.13.1    | [jc-1.13.1-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.1-darwin.tar.gz)  | 111e1d589b6d2f4bd347ae81c0e67bb2b3ce820964b313ebb71b63bdf4f73979  |
 | 1.11.8    | [jc-1.11.8-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.11.8-darwin.tar.gz)  | 0f834cb78c9969b9bb86d1617a9254151c2373976fef59c1ea1ee3bb9a7a3ab5  |
 | 1.11.2    | [jc-1.11.2-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.11.2-darwin.tar.gz)  | d89ab43151dbfbf4befad61505fa64b93c4b2fe2b4cd3250c7f0a3507e2d41a4  |
