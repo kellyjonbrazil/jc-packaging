@@ -59,8 +59,8 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 | 1.10.5    | [jc-1.10.5-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.10.5-1.x86_64.rpm)  | fd31f3be61e07aa277d1c0921ce46efd19a4ab2b211718bca377e6ff35b968c0  |
 
 
-### Binaries
-Linux and macOS binaries are built from PyPi and can be copied to any location in your path and run. These binaries may not always be on the very latest `jc` version, but are regularly updated.
+### Binaries (x86_64)
+Linux and macOS x86_64 binaries are built from PyPi and can be copied to any location in your path and run. These binaries may not always be on the very latest `jc` version, but are regularly updated.
 
 #### Linux (Fedora, RHEL, CentOS, Debian, Ubuntu)
 
