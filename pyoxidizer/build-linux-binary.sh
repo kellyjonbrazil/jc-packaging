@@ -21,5 +21,5 @@ VERSION=$1
 pyoxidizer build --release
 
 cd build/x86_64-unknown-linux-gnu/release/exe
-sha256sum jc > ~/jc-"${VERSION}"-linux.sha256
-tar -czvf ~/jc-"${VERSION}"-linux.tar.gz jc
+sha256sum jc > ~/jc-"${VERSION}"-linux-x86_64.sha256
+tar -czvf ~/jc-"${VERSION}"-linux-x86_64.tar.gz jc

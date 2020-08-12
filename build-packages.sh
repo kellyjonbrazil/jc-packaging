@@ -25,8 +25,8 @@ MAINTAINER="kellyjonbrazil@gmail.com"
 
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
 rm -rf linux/*
-curl -o linux/jc-"${VERSION}"-linux.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux.tar.gz
-tar -xvf linux/jc-"${VERSION}"-linux.tar.gz -C linux/
+curl -o linux/jc-"${VERSION}"-linux-x86_64.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux-x86_64.tar.gz
+tar -xvf linux/jc-"${VERSION}"-linux-x86_64.tar.gz -C linux/
 rm linux/*.tar.gz
 chmod +x linux/jc
 
