@@ -39,6 +39,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.4    | [jc-1.13.4-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.4-1.x86_64.deb)  | 43cd693a0d361557534c7955599303e76fd14919d61ba92026aac342909b2dc6  |
 | 1.13.2    | [jc-1.13.2-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.deb)  | 8a152bc3bb8555c3ff0231eb6e719d43cb8797fd458c3356dd10b42ab94473ea  |
 | 1.13.1    | [jc-1.13.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.1-1.x86_64.deb)  | 85374a30efe9c93476686860cf73bee6d31714d163e54b4566d86151379424a5  |
 | 1.11.8    | [jc-1.11.8-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.8-1.x86_64.deb)  | 913f2f78fa892b2f96390976168f8d007f0a01e2c4ad0410d3c0bf8524b93c78  |
@@ -51,6 +52,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.13.4    | [jc-1.13.4-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.4-1.x86_64.rpm)  | 3c526ebb7e0955413a6d4e084461c3a16c29d14a7ba631abaa317c0aa30e2872  |
 | 1.13.2    | [jc-1.13.2-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.rpm)  | d91c1eb5aa5f74049f09374c75bebdce27d0ae911349232fb7e3e85b9e399fbc  |
 | 1.13.1    | [jc-1.13.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.1-1.x86_64.rpm)  | f5b7ccc8a7c11d43dbb70ebb8079c0b63343b80c89d3319aa75873b75da13ae7  |
 | 1.11.8    | [jc-1.11.8-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.8-1.x86_64.rpm)  | 0b571e8be375799193d7509b9da59595efb4626fd420f97fed5b66a1685d0322  |
