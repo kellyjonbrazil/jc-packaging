@@ -2,6 +2,8 @@
 
 ![jc](https://github.com/kellyjonbrazil/jc-packaging/raw/master/images/jc-dig.png)
 
+> JC is [now available](https://galaxy.ansible.com/community/general) as an Ansible filter plugin in the `community.general` Collection!
+
 `jc` JSONifies the output of dozens of commands and file-types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
 
 Release notes can be found [here](https://blog.kellybrazil.com/category/jc-news/).
@@ -31,6 +33,7 @@ pip3 install jc
 | Guix System linux     | `guix install jc`                                                             |
 | MacOS                 | `brew install jc`                                                             |
 | FreeBSD               | `portsnap fetch update && cd /usr/ports/textproc/py-jc && make install clean` |
+| Ansible filter plugin | `ansible-galaxy collection install community.general`                         |
 
 ### Packages
 DEB and RPM packages are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
