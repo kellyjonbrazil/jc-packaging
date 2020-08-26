@@ -2,6 +2,8 @@
 
 ![jc](https://github.com/kellyjonbrazil/jc-packaging/raw/master/images/jc-dig.png)
 
+> Try the new `jc` [web demo](https://jc-web-demo.herokuapp.com/)!
+
 > JC is [now available](https://galaxy.ansible.com/community/general) as an Ansible filter plugin in the `community.general` Collection!
 
 `jc` JSONifies the output of dozens of commands and file-types. For more information, please see the project on [GitHub](https://github.com/kellyjonbrazil/jc).
