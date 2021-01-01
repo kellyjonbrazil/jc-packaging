@@ -89,7 +89,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| 1.14.0    | [jc-1.14.0-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.0-darwin-x86_64.tar.gz)  |   |
+| 1.14.0    | [jc-1.14.0-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.0-darwin-x86_64.tar.gz)  | db66da2561b3a508defc55a19c956b878e9679b68fa10692ef1fe330718a2db8  |
 | 1.13.4    | [jc-1.13.4-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.4-darwin-x86_64.tar.gz)  | 419f9097a10f9f30e15975cfce6f428b67945ff705a93f1d1cb203f0c6850b3e  |
 | 1.13.2    | [jc-1.13.2-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.2-darwin.tar.gz)                | a7cceb11e522b3a376ec0da1196d8373c6a19f21529553f6c8d0dbc7f8fab29f  |
 | 1.13.1    | [jc-1.13.1-darwin.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.1-darwin.tar.gz)                | 111e1d589b6d2f4bd347ae81c0e67bb2b3ce820964b313ebb71b63bdf4f73979  |
