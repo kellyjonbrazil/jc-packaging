@@ -44,6 +44,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.14.1    | [jc-1.14.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.deb)  | ccc7c627dba2349cfd3e1f2d0527792309d872a27a6d5f74e1cf97e681ba8357  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.deb)  | 138bd66a391390ce67e32c7a0bd7b9c67db187205102e2ac0d6f8c0963eb6e1f  |
 | 1.13.4    | [jc-1.13.4-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.4-1.x86_64.deb)  | 43cd693a0d361557534c7955599303e76fd14919d61ba92026aac342909b2dc6  |
 | 1.13.2    | [jc-1.13.2-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.deb)  | 8a152bc3bb8555c3ff0231eb6e719d43cb8797fd458c3356dd10b42ab94473ea  |
@@ -58,6 +59,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.14.1    | [jc-1.14.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.rpm)  | 4cb09fe8d35df14a45db0054bbdeb57f1be9eab5bcd2a2a1833273fed8c6a744  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.rpm)  | 738c7dcc3e9d42b3020e822ff5453d221323b0ecaf303c16fa75d25ea29bb126  |
 | 1.13.4    | [jc-1.13.4-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.4-1.x86_64.rpm)  | 3c526ebb7e0955413a6d4e084461c3a16c29d14a7ba631abaa317c0aa30e2872  |
 | 1.13.2    | [jc-1.13.2-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.13.2-1.x86_64.rpm)  | d91c1eb5aa5f74049f09374c75bebdce27d0ae911349232fb7e3e85b9e399fbc  |
@@ -75,6 +77,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                               | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.14.1    | [jc-1.14.1-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.1-linux-x86_64.tar.gz)  | 847cff4472daa570f1317475c311d373e8d0e210c0d591197e1e1be385efc94d  |
 | 1.14.0    | [jc-1.14.0-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.0-linux-x86_64.tar.gz)  | 6d3695cd2ace481854f2a882ea46cb4e859dc728b61298998c619ffccaf1e2bf  |
 | 1.13.4    | [jc-1.13.4-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.4-linux-x86_64.tar.gz)  | e622126593e69919fb3cd64fbb45185942f8535fdd80d96bec1fda28e096ce22  |
 | 1.13.2    | [jc-1.13.2-linux.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.13.2-linux.tar.gz)                | 130be04bb91db84190bef927bf5b97a27738226e4c9f270800990714bac908ee  |
