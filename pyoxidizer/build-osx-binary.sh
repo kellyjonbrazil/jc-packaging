@@ -16,4 +16,4 @@ pyoxidizer build --release
 
 cd build/x86_64-apple-darwin/release/exe
 shasum -a 256 jc > ~/jc-"${VERSION}"-darwin-x86_64.sha256
-tar -czvf ~/jc-"${VERSION}"-darwin.tar-x86_64.gz jc
+tar -czvf ~/jc-"${VERSION}"-darwin-x86_64.tar.gz jc
