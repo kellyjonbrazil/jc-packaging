@@ -31,7 +31,7 @@ pip3 install jc
 | Fedora linux          | `dnf install jc`                                                              |
 | openSUSE linux        | `zypper install jc`                                                           |
 | Arch linux            | `pacman -S jc`                                                                |
-| NixOS linux           | `nix-env -iA nixpkgs.jc`                                                      |
+| NixOS linux           | `nix-env -iA nixpkgs.jc` or `nix-env -iA nixos.jc`                            |
 | Guix System linux     | `guix install jc`                                                             |
 | MacOS                 | `brew install jc`                                                             |
 | FreeBSD               | `portsnap fetch update && cd /usr/ports/textproc/py-jc && make install clean` |
@@ -44,6 +44,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.0    | [jc-1.15.0-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-1.x86_64.deb)  | d1464bf7c7f10b55b4b333d65e724a06a786d9fd92d2c6023726efc59bcf7bf3  |
 | 1.14.4    | [jc-1.14.4-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.4-1.x86_64.deb)  | 0f53872b1d4364a0d6a235eba0a78f7c71b09bbfb1e93dff6b8d3af0ce2ecb44  |
 | 1.14.1    | [jc-1.14.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.deb)  | ccc7c627dba2349cfd3e1f2d0527792309d872a27a6d5f74e1cf97e681ba8357  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.deb)  | 138bd66a391390ce67e32c7a0bd7b9c67db187205102e2ac0d6f8c0963eb6e1f  |
@@ -60,6 +61,7 @@ DEB and RPM packages are built from PyPi. These packages may not always be on th
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.0    | [jc-1.15.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-1.x86_64.rpm)  | 5be57f179d42459ff4abc36f71f4f58a9248b60b10568099aadbfd452417db33  |
 | 1.14.4    | [jc-1.14.4-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.4-1.x86_64.rpm)  | ed3a2e22e370f732898c2e20f940943a17c96246fb9683618912a8e4f6bdb18c  |
 | 1.14.1    | [jc-1.14.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.rpm)  | 4cb09fe8d35df14a45db0054bbdeb57f1be9eab5bcd2a2a1833273fed8c6a744  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.rpm)  | 738c7dcc3e9d42b3020e822ff5453d221323b0ecaf303c16fa75d25ea29bb126  |
@@ -79,6 +81,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                               | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.0    | [jc-1.15.0-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.0-linux-x86_64.tar.gz)  | 68ec9df75a740761067ac68c3b664bcb9f80e980e4f2fd8258184d7fd88e03b7  |
 | 1.14.4    | [jc-1.14.4-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.4-linux-x86_64.tar.gz)  | 6d109281d1858bf0839254c723a80bd4ad7c08df8a869afcb8398feb7076e1d1  |
 | 1.14.1    | [jc-1.14.1-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.1-linux-x86_64.tar.gz)  | 847cff4472daa570f1317475c311d373e8d0e210c0d591197e1e1be385efc94d  |
 | 1.14.0    | [jc-1.14.0-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.0-linux-x86_64.tar.gz)  | 6d3695cd2ace481854f2a882ea46cb4e859dc728b61298998c619ffccaf1e2bf  |
@@ -95,6 +98,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.0    | [jc-1.15.0-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.0-darwin-x86_64.tar.gz)  | ea13a38fe73bdc15b971c7afdcd62c1cca1ef1429c189a6e284bf3a609933a5b  |
 | 1.14.4    | [jc-1.14.4-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.4-darwin-x86_64.tar.gz)  | 0c0278dbed7e76af631bfb95668c7fcf502ea9971d99e4980cc6de98b3cce821  |
 | 1.14.1    | [jc-1.14.1-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.1-darwin-x86_64.tar.gz)  | 38202516c94e4f43299f35aaf782b0186a2daad8d9a48b44e3ce25af27e99c77  |
 | 1.14.0    | [jc-1.14.0-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.14.0-darwin-x86_64.tar.gz)  | db66da2561b3a508defc55a19c956b878e9679b68fa10692ef1fe330718a2db8  |
