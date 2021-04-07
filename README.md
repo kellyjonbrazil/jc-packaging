@@ -38,7 +38,7 @@ pip3 install jc
 | Ansible filter plugin | `ansible-galaxy collection install community.general`                         |
 
 ### Packages
-DEB and RPM packages are built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
+DEB and RPM packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
 #### DEB (Debian, Ubuntu)
 
