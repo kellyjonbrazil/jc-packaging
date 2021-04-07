@@ -40,11 +40,13 @@ pip3 install jc
 ### Packages
 DEB and RPM packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
+Version 1.15.0 and above include the `jc` binary and man page.
+
 #### DEB (Debian, Ubuntu)
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| 1.15.0    | [jc-1.15.0-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-1.x86_64.deb)  | d1464bf7c7f10b55b4b333d65e724a06a786d9fd92d2c6023726efc59bcf7bf3  |
+| 1.15.0    | [jc-1.15.0-2.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-2.x86_64.deb)  | 63705ef57074c6de48c12f16dcaf7199f678f6081f1b3226cc9f26985d0fed85  |
 | 1.14.4    | [jc-1.14.4-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.4-1.x86_64.deb)  | 0f53872b1d4364a0d6a235eba0a78f7c71b09bbfb1e93dff6b8d3af0ce2ecb44  |
 | 1.14.1    | [jc-1.14.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.deb)  | ccc7c627dba2349cfd3e1f2d0527792309d872a27a6d5f74e1cf97e681ba8357  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.deb)  | 138bd66a391390ce67e32c7a0bd7b9c67db187205102e2ac0d6f8c0963eb6e1f  |
@@ -61,7 +63,7 @@ DEB and RPM packages include the linux binaries built from PyPi. These packages 
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| 1.15.0    | [jc-1.15.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-1.x86_64.rpm)  | 5be57f179d42459ff4abc36f71f4f58a9248b60b10568099aadbfd452417db33  |
+| 1.15.0    | [jc-1.15.0-2.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.0-2.x86_64.rpm)  | c4011c673baf947f2e6658dafc6f21d266bc8105b7dcf5e2e6587746f8d29eac  |
 | 1.14.4    | [jc-1.14.4-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.4-1.x86_64.rpm)  | ed3a2e22e370f732898c2e20f940943a17c96246fb9683618912a8e4f6bdb18c  |
 | 1.14.1    | [jc-1.14.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.1-1.x86_64.rpm)  | 4cb09fe8d35df14a45db0054bbdeb57f1be9eab5bcd2a2a1833273fed8c6a744  |
 | 1.14.0    | [jc-1.14.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.14.0-1.x86_64.rpm)  | 738c7dcc3e9d42b3020e822ff5453d221323b0ecaf303c16fa75d25ea29bb126  |
