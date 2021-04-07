@@ -25,17 +25,24 @@ MAINTAINER="kellyjonbrazil@gmail.com"
 
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
 rm -rf linux/*
-curl -o linux/jc-"${VERSION}"-linux-x86_64.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux-x86_64.tar.gz
-tar -xvf linux/jc-"${VERSION}"-linux-x86_64.tar.gz -C linux/
-rm linux/*.tar.gz
-chmod +x linux/jc
+
+# download jc binary
+mkdir -p linux/usr/local/bin
+curl -o linux/usr/local/bin/jc-"${VERSION}"-linux-x86_64.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux-x86_64.tar.gz
+tar -xvf linux/usr/local/bin/jc-"${VERSION}"-linux-x86_64.tar.gz -C linux/usr/local/bin/
+rm linux/usr/local/bin/*.tar.gz
+chmod +x linux/usr/local/bin/jc
+
+# download latest jc man page
+mkdir -p linux/usr/share/man/man1
+curl -o linux/usr/share/man/man1/jc.1.gz https://raw.githubusercontent.com/kellyjonbrazil/jc/master/man/jc.1.gz
 
 fpm \
     --verbose \
     -t rpm \
     -s dir \
-    -C linux \
-    --prefix /usr/local/bin \
+    -C linux/ \
+    --prefix / \
     -n "${NAME}" \
     -v "${VERSION}" \
     -m "${MAINTAINER}" \
@@ -46,14 +53,14 @@ fpm \
     -a x86_64 \
     --rpm-os linux \
     -p dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.rpm \
-    "${NAME}"
+    -n "${NAME}"
 
 fpm \
     --verbose \
     -t deb \
     -s dir \
-    -C linux \
-    --prefix /usr/local/bin \
+    -C linux/ \
+    --prefix / \
     -n "${NAME}" \
     -v "${VERSION}" \
     -m "${MAINTAINER}" \
@@ -63,7 +70,7 @@ fpm \
     --vendor "${MAINTAINER}" \
     -a x86_64 \
     -p dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb \
-    "${NAME}"
+    -n "${NAME}"
 
 
 echo "RPM info:"
