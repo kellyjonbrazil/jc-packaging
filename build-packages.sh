@@ -45,6 +45,7 @@ fpm \
     --prefix / \
     -n "${NAME}" \
     -v "${VERSION}" \
+    --iteration "${RELEASE}" \
     -m "${MAINTAINER}" \
     --description "${DESCRIPTION}" \
     --url "${URL}" \
@@ -63,6 +64,7 @@ fpm \
     --prefix / \
     -n "${NAME}" \
     -v "${VERSION}" \
+    --iteration "${RELEASE}" \
     -m "${MAINTAINER}" \
     --description "${DESCRIPTION}" \
     --url "${URL}" \
