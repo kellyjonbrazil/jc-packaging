@@ -71,7 +71,7 @@ fpm \
     --license MIT \
     --vendor "${MAINTAINER}" \
     -a x86_64 \
-    -p dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb \
+    -p dist/"${NAME}"_"${VERSION}"-"${RELEASE}"_amd64.deb \
     -n "${NAME}"
 
 
@@ -85,9 +85,9 @@ shasum -a 256 dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.rpm
 echo
 
 echo "DEB info:"
-dpkg --info dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
+dpkg --info dist/"${NAME}"_"${VERSION}"-"${RELEASE}"_amd64.deb
 echo "included files:"
-dpkg --contents dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
+dpkg --contents dist/"${NAME}"_"${VERSION}"-"${RELEASE}"_amd64.deb
 echo
-shasum -a 256 dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.deb
+shasum -a 256 dist/"${NAME}"_"${VERSION}"-"${RELEASE}"_amd64.deb
 echo
