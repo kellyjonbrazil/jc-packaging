@@ -26,16 +26,16 @@ MAINTAINER="kellyjonbrazil@gmail.com"
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
 rm -rf linux/*
 
-# download jc binary
+# download binary
 mkdir -p linux/usr/local/bin
-curl -o linux/usr/local/bin/jc-"${VERSION}"-linux-x86_64.tar.gz https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-"${VERSION}"-linux-x86_64.tar.gz
-tar -xvf linux/usr/local/bin/jc-"${VERSION}"-linux-x86_64.tar.gz -C linux/usr/local/bin/
+curl -o linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz https://"${NAME}"-packages.s3-us-west-1.amazonaws.com/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz
+tar -xvf linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz -C linux/usr/local/bin/
 rm linux/usr/local/bin/*.tar.gz
-chmod +x linux/usr/local/bin/jc
+chmod +x linux/usr/local/bin/"${NAME}"
 
-# download latest jc man page
+# download latest man page
 mkdir -p linux/usr/share/man/man1
-curl -o linux/usr/share/man/man1/jc.1.gz https://raw.githubusercontent.com/kellyjonbrazil/jc/master/man/jc.1.gz
+curl -o linux/usr/share/man/man1/"${NAME}".1.gz https://raw.githubusercontent.com/kellyjonbrazil/"${NAME}"/master/man/"${NAME}".1.gz
 
 fpm \
     --verbose \
