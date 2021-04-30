@@ -37,6 +37,8 @@ pip3 install jc
 | FreeBSD               | `portsnap fetch update && cd /usr/ports/textproc/py-jc && make install clean` |
 | Ansible filter plugin | `ansible-galaxy collection install community.general`                         |
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/jc.svg)](https://repology.org/project/jc/versions)
+
 ### Packages
 DEB and RPM packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
