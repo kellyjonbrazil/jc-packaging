@@ -48,6 +48,7 @@ Version 1.15.0 and above include the `jc` binary and man page. Older versions do
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.4    | [jc_1.15.4-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.15.4-1_amd64.deb)    | 50081172a695a850905214368ee28e1a1c7e3333c812fce730e286ea328709ff  |
 | 1.15.3    | [jc_1.15.3-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.15.3-1_amd64.deb)    | 33ddd1095daf490e0286610930cd76dc73ef608a86d0f67918096754a681aed3  |
 | 1.15.2    | [jc-1.15.2-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.2-1.x86_64.deb)  | 1c486b9734bfe63ea90700a89a483f0d0c36cb9acd715a50a18d70a596336185  |
 | 1.15.1    | [jc-1.15.1-1.x86_64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.1-1.x86_64.deb)  | edfeb6bb89627db7120faf2074d4372c465a9baca0c7dc78869a311a30003ef8  |
@@ -68,6 +69,7 @@ Version 1.15.0 and above include the `jc` binary and man page. Older versions do
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.4    | [jc-1.15.4-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.4-1.x86_64.rpm)  | 72cc20462db33f9025f008cc3c3ae409cc8f385e151c7d0cd9736b5098f58726  |
 | 1.15.3    | [jc-1.15.3-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.3-1.x86_64.rpm)  | fad42d570dc73fe33a66c19f4a44dc86a092ed95e4b0c9fa7b42f0ed4ae08413  |
 | 1.15.2    | [jc-1.15.2-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.2-1.x86_64.rpm)  | 5f2a4fffd2ac33eadf01581c1e1461cb5a0200ddab48b7d5850acac2eddcae6e  |
 | 1.15.1    | [jc-1.15.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.1-1.x86_64.rpm)  | d133de69b8907b27147991e6fe6679cfb43da55c2e1ea3652d849c9a7ba422fd  |
@@ -91,6 +93,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                               | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.4    | [jc-1.15.4-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.4-linux-x86_64.tar.gz)  | fb9e910d3f4d984340e65df240dbb1795ab8203778420d905b2d090f8e7c8ab6  |
 | 1.15.3    | [jc-1.15.3-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.3-linux-x86_64.tar.gz)  | 1977f94e30f402c2899df18b80880d1745e015eb87f793be104fa0430654b226  |
 | 1.15.2    | [jc-1.15.2-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.2-linux-x86_64.tar.gz)  | b7fa0e85a36a9805569d8d613e3b44a4ff4171d4417435eba4164393c5030e3b  |
 | 1.15.1    | [jc-1.15.1-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.1-linux-x86_64.tar.gz)  | f7636a6836a141d0ee85641b3fc3f7a9f94a3c8dee8739d13e67c39e34863785  |
@@ -111,6 +114,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.4    | [jc-1.15.4-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.4-darwin-x86_64.tar.gz)  | 2afcbfe32ba217b4c2ae7e478e451939e58fa6eb9961878a4e060b48671f9cdf  |
 | 1.15.3    | [jc-1.15.3-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.3-darwin-x86_64.tar.gz)  | 8154cffa8e3f274f800b87cf368105db48c655741f838bfe43579c336d52b63f  |
 | 1.15.2    | [jc-1.15.2-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.2-darwin-x86_64.tar.gz)  | dc53641621f742f5a1dc65a9e0ddfb7f2006d87025bac83e1be0461066fceca0  |
 | 1.15.1    | [jc-1.15.1-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.15.1-darwin-x86_64.tar.gz)  | 1f88f11dad5a77f5dbfe2a8e8baef61c6ebdfe3dd0f1ae86d9b58ea5647c1cd6  |
