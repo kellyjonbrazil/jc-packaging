@@ -40,7 +40,7 @@ pip3 install jc
 [![Packaging status](https://repology.org/badge/vertical-allrepos/jc.svg)](https://repology.org/project/jc/versions)
 
 ### Packaged Binaries
-DEB, RPM, and MSI packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
+DEB, RPM, and MSI packages include the linux and Windows binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
 Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man page. Older versions do not include the man page.
 
