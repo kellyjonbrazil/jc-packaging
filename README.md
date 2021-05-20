@@ -11,7 +11,7 @@
 Release notes can be found [here](https://blog.kellybrazil.com/category/jc-news/).
 
 ## Installing JC
-There are several ways to get `jc`. You can install via `pip`, `apt-get`, `dnf`, `zypper`, `pacman`, `nix-env`, `guix`, `brew`, `portsnap`, DEB or RPM packaged binaries, or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
+There are several ways to get `jc`. You can install via `pip`, `apt-get`, `dnf`, `zypper`, `pacman`, `nix-env`, `guix`, `brew`, `portsnap`; DEB, RPM, and MSI packaged binaries; or by downloading the correct binary for your architecture and running it anywhere on your filesystem.
 
 ### Pip (macOS, linux, unix, Windows)
 For the most up-to-date version and the most cross-platform option, use `pip` or `pip3` to download and install `jc` directly from [PyPi](https://pypi.org/project/jc/):
@@ -40,9 +40,9 @@ pip3 install jc
 [![Packaging status](https://repology.org/badge/vertical-allrepos/jc.svg)](https://repology.org/project/jc/versions)
 
 ### Packaged Binaries
-DEB and RPM packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
+DEB, RPM, and MSI packages include the linux binaries built from PyPi. These packages may not always be on the very latest `jc` version, but are regularly updated.
 
-Version 1.15.0 and above include the `jc` binary and man page. Older versions do not include the man page.
+Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man page. Older versions do not include the man page.
 
 #### DEB (Debian, Ubuntu)
 
@@ -85,6 +85,11 @@ Version 1.15.0 and above include the `jc` binary and man page. Older versions do
 | 1.11.1    | [jc-1.11.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.11.1-1.x86_64.rpm)  | c55d3d40cced6c64d8f906e26eac06ebd03a87c8adcb6d5f8b223b3844c97753  |
 | 1.10.5    | [jc-1.10.5-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.10.5-1.x86_64.rpm)  | fd31f3be61e07aa277d1c0921ce46efd19a4ab2b211718bca377e6ff35b968c0  |
 
+#### MSI (Windows 2016+)
+
+| Version   | File                                                                             | SHA256 Hash                                                       |
+|-----------|----------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.15.4    | [jc-1.15.4.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.4.msi)    | f3b3afeda0ee702f17d8706d684a41a56536ace1ec79da24880545338523c425  |
 
 ### Binaries (x86_64)
 Linux and macOS x86_64 binaries are built from PyPi and can be copied to any location in your path and run. These binaries may not always be on the very latest `jc` version, but are regularly updated.
