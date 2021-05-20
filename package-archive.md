@@ -38,7 +38,7 @@ Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man pa
 
 | Version   | File                                                                             | SHA256 Hash                                                       |
 |-----------|----------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| 1.15.4    | [jc-1.15.4.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.4.msi)    | f3b3afeda0ee702f17d8706d684a41a56536ace1ec79da24880545338523c425  |
+|           |                                                                                  |    |
 
 ## Binaries (x86_64)
 Linux and macOS x86_64 binaries are built from PyPi and can be copied to any location in your path and run.
