@@ -22,6 +22,7 @@ NAME=jc
 DESCRIPTION="This tool serializes the output of popular gnu linux command line tools and file types to structured JSON output"
 URL="https://github.com/kellyjonbrazil/jc"
 MAINTAINER="kellyjonbrazil@gmail.com"
+RAW_URL="https://raw.githubusercontent.com/kellyjonbrazil/${NAME}/master"
 
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
 rm -rf linux/*
@@ -35,7 +36,7 @@ chmod +x linux/usr/local/bin/"${NAME}"
 
 # download latest man page
 mkdir -p linux/usr/share/man/man1
-curl -o linux/usr/share/man/man1/"${NAME}".1.gz https://raw.githubusercontent.com/kellyjonbrazil/"${NAME}"/master/man/"${NAME}".1.gz
+curl -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/master/man/${NAME}.1"
 
 fpm \
     --verbose \
