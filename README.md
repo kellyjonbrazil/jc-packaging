@@ -76,6 +76,7 @@ Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man pa
 
 | Version   | File                                                                             | SHA256 Hash                                                       |
 |-----------|----------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.16.1    | [jc-1.16.1.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.16.1.msi)    | 2f084c451ec05bb1e8e474a65f09db4417939e673f31f55c73522d3e3af30e28  |
 | 1.16.0    | [jc-1.16.0.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.16.0.msi)    | f1973e5aed3af3234a6b7070729c1487258af35867caf83112664053301d1324  |
 | 1.15.4    | [jc-1.15.4.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.15.4.msi)    | f3b3afeda0ee702f17d8706d684a41a56536ace1ec79da24880545338523c425  |
 
