@@ -48,6 +48,7 @@ Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man pa
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.17.3    | [jc_1.17.3-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.17.3-1_amd64.deb)    | 456162181ba83e5b7ca79456aff16ed7c02f9654357fc9074c044fd8b9eabc48  |
 | 1.17.1    | [jc_1.17.1-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.17.1-1_amd64.deb)    | 3d02e668aa460b3cf430e2d975f9e2f0c94a2456a4d525eedf033df2acddfeed  |
 | 1.17.0    | [jc_1.17.0-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.17.0-1_amd64.deb)    | 2578d61ed6bdeb3cb6f2ed0ffc6df65478e906f49f32f89ef3804a965450d72b  |
 | 1.16.1    | [jc_1.16.1-1_amd64.deb](https://jc-packages.s3-us-west-1.amazonaws.com/jc_1.16.1-1_amd64.deb)    | c8159a569c32f503055b608ee72811246aab550a635551aa1d2f05859cd99862  |
@@ -59,6 +60,7 @@ Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man pa
 
 | Version   | File                                                                                             | SHA256 Hash                                                       |
 |-----------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.17.3    | [jc-1.17.3-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.3-1.x86_64.rpm)  | 47013a63d92171f2c569b12414715945f503f3fc54d52cf82f1214f8f0c30b0e  |
 | 1.17.1    | [jc-1.17.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.1-1.x86_64.rpm)  | 88ffcbcab22706533120e48a5cea09a93e6ac7dcd255bebd9edb247a611ee8fa  |
 | 1.17.0    | [jc-1.17.0-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.0-1.x86_64.rpm)  | 3d5df318f42083d9fb090a28de16d87ded9234c9f230efe48a403be36e9ae51c  |
 | 1.16.1    | [jc-1.16.1-1.x86_64.rpm](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.16.1-1.x86_64.rpm)  | a5a84651b7f16f5f64eaca75785f4c24569b2ec318ed6e1aae21a657c38f9380  |
@@ -70,6 +72,7 @@ Version 1.15.0 and above DEB and RPM packages include the `jc` binary and man pa
 
 | Version   | File                                                                             | SHA256 Hash                                                       |
 |-----------|----------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.17.3    | [jc-1.17.3.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.3.msi)    | 606d2d0cc06232cbe7f93860d7ee9496eef7df10699bc0a9d59e605f3ebed4ec  |
 | 1.17.1    | [jc-1.17.1.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.1.msi)    | 36a69cd8c603cb75beaabefa936d3fa9da4d22f6df92cbf365666cdc5ccd4f4b  |
 | 1.17.0    | [jc-1.17.0.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.17.0.msi)    | 2c3021f4d3e4d03ca1a74bccb3dd297ef70fce3899be07b446c0d10f5b6f654b  |
 | 1.16.1    | [jc-1.16.1.msi](https://jc-packages.s3-us-west-1.amazonaws.com/jc-1.16.1.msi)    | 2f084c451ec05bb1e8e474a65f09db4417939e673f31f55c73522d3e3af30e28  |
@@ -84,6 +87,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                               | SHA256 Hash (binary file)                                         |
 |-----------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.17.3    | [jc-1.17.3-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.3-linux-x86_64.tar.gz)  | cd5194637abaa0587ce0d05a351e2044d1d39bb551378e0b7c05eb72c19fbdd2  |
 | 1.17.1    | [jc-1.17.1-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.1-linux-x86_64.tar.gz)  | c467998e36f6026787276c0d7a3cd47f388f52f1b4c4fdecb2775a45e29ff446  |
 | 1.17.0    | [jc-1.17.0-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.0-linux-x86_64.tar.gz)  | 479e0a03e7e6656059016e54fa268499b3389dd5306c86535a3a92a864b71625  |
 | 1.16.1    | [jc-1.16.1-linux-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.16.1-linux-x86_64.tar.gz)  | 9e04245ad7f70b56a117a3e837776c2479cbfaa56f3ffc971174d8f171051654  |
@@ -95,6 +99,7 @@ Linux and macOS x86_64 binaries are built from PyPi and can be copied to any loc
 
 | Version   | File                                                                                                                 | SHA256 Hash (binary file)                                         |
 |-----------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| 1.17.3    | [jc-1.17.3-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.3-darwin-x86_64.tar.gz)  | 703babc16c74b38f19849435da7f0390fe73fcb6c1ede18b5200877117a4a266  |
 | 1.17.1    | [jc-1.17.1-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.1-darwin-x86_64.tar.gz)  | c467998e36f6026787276c0d7a3cd47f388f52f1b4c4fdecb2775a45e29ff446  |
 | 1.17.0    | [jc-1.17.0-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.17.0-darwin-x86_64.tar.gz)  | 501f359ca483d4ac5cde3d69a69f5c3b061c44bc36428288d47843b3c6caa4a5  |
 | 1.16.1    | [jc-1.16.1-darwin-x86_64.tar.gz](https://jc-packages.s3-us-west-1.amazonaws.com/bin/jc-1.16.1-darwin-x86_64.tar.gz)  | abe288aa0fc44ccb42d33c4291e8d7f38676cf2d27486b5c34dd460aa6b89598  |
