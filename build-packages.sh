@@ -42,9 +42,9 @@ tar -xvf linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz -C linux
 rm linux/usr/local/bin/*.tar.gz
 chmod +x linux/usr/local/bin/"${NAME}"
 
-# download latest man page
+# download man page for this version (version must be tagged in github)
 mkdir -p linux/usr/share/man/man1
-curl -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/master/man/${NAME}.1"
+curl -f -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/v${VERSION}/man/${NAME}.1" || { echo 'curl download failed' ; exit 1; }
 
 fpm \
     --verbose \
