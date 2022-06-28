@@ -1,0 +1,10 @@
+Build requires Windows 10
+
+1) Modify the pyoxidizer.bzl file with the new version number
+
+2) Run:
+pyoxidizer build --release
+
+3) After build is complete, you will find the MSI package under the "build"
+   folder. You can also zip the files under "staged_files" to create a
+   manual install archive.
