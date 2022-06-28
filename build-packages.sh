@@ -28,13 +28,6 @@ BIN_PATH="${HOME}"/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz
 rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
 rm -rf linux/*
 
-# download binary - *** Deprecated. Now gets binary locally from home directory ***
-# mkdir -p linux/usr/local/bin
-# curl -o linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz https://"${NAME}"-packages.s3-us-west-1.amazonaws.com/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz
-# tar -xvf linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz -C linux/usr/local/bin/
-# rm linux/usr/local/bin/*.tar.gz
-# chmod +x linux/usr/local/bin/"${NAME}"
-
 # move binary to build directory
 mkdir -p linux/usr/local/bin
 cp "${BIN_PATH}" linux/usr/local/bin
