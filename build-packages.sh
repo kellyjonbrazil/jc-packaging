@@ -37,7 +37,14 @@ chmod +x linux/usr/local/bin/"${NAME}"
 
 # download man page for this version (version must be tagged in github)
 mkdir -p linux/usr/share/man/man1
-curl -f -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/v${VERSION}/man/${NAME}.1" || { echo 'curl download failed' ; exit 1; }
+curl -f -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/v${VERSION}/man/${NAME}.1" || { echo 'curl man download failed' ; exit 1; }
+
+# download shell completions for this version (version must be tagged in github)
+mkdir -p linux/etc/bash_completion.d
+curl -f -o "linux/etc/bash_completion.d/${NAME}" "${RAW_URL}/v${VERSION}/completions/${NAME}_bash_completion.sh" || { echo 'curl bash completion download failed' ; exit 1; }
+
+mkdir -p linux/usr/share/zsh/site-functions
+curl -f -o "linux/usr/share/zsh/site-functions/_${NAME}" "${RAW_URL}/v${VERSION}/completions/${NAME}_zsh_completion.sh" || { echo 'curl zsh completion download failed' ; exit 1; }
 
 fpm \
     --verbose \
