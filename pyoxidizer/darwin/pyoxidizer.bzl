@@ -7,6 +7,11 @@ def make_dist():
     return default_python_distribution()
 
 
+def resource_callback(policy, resource):
+    if type(resource) == "PythonModuleSource":
+        resource.add_include = True
+
+
 def make_exe(dist):
     policy = dist.make_python_packaging_policy()
 
