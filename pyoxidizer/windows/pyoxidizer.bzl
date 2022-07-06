@@ -41,19 +41,19 @@ def make_exe(dist):
     # documented below.
     python_config = dist.make_python_interpreter_config()
 
-    # Remove source files and docstrings from dist to reduce executable size
+    # Remove source files from dist to reduce executable size (keep docstrings)
     policy.include_distribution_sources = False
     policy.include_non_distribution_sources = False
     policy.bytecode_optimize_level_zero = False
-    policy.bytecode_optimize_level_one = False
-    policy.bytecode_optimize_level_two = True
+    policy.bytecode_optimize_level_one = True
+    policy.bytecode_optimize_level_two = False
 
     # Enable the standard path-based importer which attempts to load
     # modules from the filesystem.
     python_config.filesystem_importer = True
 
-    # Remove docstrings for smaller executable
-    python_config.optimization_level = 2
+    # Remove source for smaller executable (keep docstrings)
+    python_config.optimization_level = 1
 
     # Evaluate a string as Python code when the interpreter starts.
     python_config.run_command = "import jello.cli; jello.cli.main()"
