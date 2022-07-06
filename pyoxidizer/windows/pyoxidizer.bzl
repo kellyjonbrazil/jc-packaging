@@ -20,9 +20,9 @@ def make_exe(dist):
     # and: https://github.com/indygreg/PyOxidizer/issues/312
     policy.register_resource_callback(resource_callback)
 
-    # Package all available Python extensions in the distribution.
-    # policy.extension_module_filter = "all"
-    policy.extension_module_filter = "no-libraries"
+    # Package all available Python extensions in the distribution. (needed on Windows)
+    # policy.extension_module_filter = "no-libraries"
+    policy.extension_module_filter = "all"
 
     # Use in-memory location for adding resources by default.
     policy.resources_location = "in-memory"
