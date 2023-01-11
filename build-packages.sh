@@ -25,7 +25,7 @@ MAINTAINER="kellyjonbrazil@gmail.com"
 RAW_URL="https://raw.githubusercontent.com/kellyjonbrazil/${NAME}"
 BIN_PATH="${HOME}/dist/${NAME}-${VERSION}-linux-x86_64.tar.gz"
 
-rm "dist/${NAME}-${VERSION}-${RELEASE}.x86_64.*"
+rm "dist/${NAME}-${VERSION}-${RELEASE}*"
 rm -rf linux/*
 
 # move binary to build directory
