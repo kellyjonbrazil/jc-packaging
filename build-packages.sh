@@ -23,17 +23,17 @@ DESCRIPTION="This tool serializes the output of popular gnu linux command line t
 URL="https://github.com/kellyjonbrazil/${NAME}"
 MAINTAINER="kellyjonbrazil@gmail.com"
 RAW_URL="https://raw.githubusercontent.com/kellyjonbrazil/${NAME}"
-BIN_PATH="${HOME}"/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz
+BIN_PATH="${HOME}/dist/${NAME}-${VERSION}-linux-x86_64.tar.gz"
 
-rm dist/"${NAME}"-"${VERSION}"-"${RELEASE}".x86_64.*
+rm "dist/${NAME}-${VERSION}-${RELEASE}.x86_64.*"
 rm -rf linux/*
 
 # move binary to build directory
 mkdir -p linux/usr/local/bin
 cp "${BIN_PATH}" linux/usr/local/bin
-tar -xvf linux/usr/local/bin/"${NAME}"-"${VERSION}"-linux-x86_64.tar.gz -C linux/usr/local/bin/
+tar -xvf "linux/usr/local/bin/${NAME}-${VERSION}-linux-x86_64.tar.gz" -C linux/usr/local/bin/
 rm linux/usr/local/bin/*.tar.gz
-chmod +x linux/usr/local/bin/"${NAME}"
+chmod +x "linux/usr/local/bin/${NAME}"
 
 # download man page for this version (version must be tagged in github)
 mkdir -p linux/usr/share/man/man1
