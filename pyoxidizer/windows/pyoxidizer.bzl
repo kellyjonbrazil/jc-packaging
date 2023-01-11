@@ -20,9 +20,9 @@ def make_exe(dist):
     # and: https://github.com/indygreg/PyOxidizer/issues/312
     policy.register_resource_callback(resource_callback)
 
-    # Package all available Python extensions in the distribution.
-    # policy.extension_module_filter = "all"
-    policy.extension_module_filter = "no-libraries"
+    # Package all available Python extensions in the distribution. (needed on Windows)
+    # policy.extension_module_filter = "no-libraries"
+    policy.extension_module_filter = "all"
 
     # Use in-memory location for adding resources by default.
     policy.resources_location = "in-memory"
@@ -56,13 +56,13 @@ def make_exe(dist):
     python_config.optimization_level = 1
 
     # Evaluate a string as Python code when the interpreter starts.
-    python_config.run_command = "import jello.cli; jello.cli.main()"
+    python_config.run_command = "import jc.cli; jc.cli.main()"
 
     # Produce a PythonExecutable from a Python distribution, embedded
     # resources, and other options. The returned object represents the
     # standalone executable that will be built.
     exe = dist.to_python_executable(
-        name="jello",
+        name="jc",
         packaging_policy=policy,
         config=python_config,
     )
