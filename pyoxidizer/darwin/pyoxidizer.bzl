@@ -21,8 +21,8 @@ def make_exe(dist):
     policy.register_resource_callback(resource_callback)
 
     # Package all available Python extensions in the distribution.
-    # policy.extension_module_filter = "all"
-    policy.extension_module_filter = "no-libraries"
+    policy.extension_module_filter = "all"
+    # policy.extension_module_filter = "no-libraries"
 
     # Use in-memory location for adding resources by default.
     policy.resources_location = "in-memory"
