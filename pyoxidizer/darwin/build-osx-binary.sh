@@ -8,8 +8,14 @@ fi
 NAME=jc
 VERSION=$1
 
+if [[ $(uname -m) == "x86_64" ]]; then
+    ARCH=x86_64
+else
+    ARCH=aarch64
+fi
+
 pyoxidizer build --release
 
-cd build/x86_64-apple-darwin/release/install
-shasum -a 256 "${NAME}" > "${HOME}/dist/${NAME}-${VERSION}-darwin-x86_64.sha256"
-tar -czvf "${HOME}/dist/${NAME}-${VERSION}-darwin-x86_64.tar.gz" "${NAME}"
+cd "build/${ARCH}-apple-darwin/release/install"
+shasum -a 256 "${NAME}" > "${HOME}/dist/${NAME}-${VERSION}-darwin-${ARCH}.sha256"
+tar -czvf "${HOME}/dist/${NAME}-${VERSION}-darwin-${ARCH}.tar.gz" "${NAME}"
