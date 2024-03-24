@@ -23,9 +23,18 @@ DESCRIPTION="This tool serializes the output of popular gnu linux command line t
 URL="https://github.com/kellyjonbrazil/${NAME}"
 MAINTAINER="kellyjonbrazil@gmail.com"
 RAW_URL="https://raw.githubusercontent.com/kellyjonbrazil/${NAME}"
-BIN_PATH="${HOME}/dist/${NAME}-${VERSION}-linux-x86_64.tar.gz"
-RPM_NAME="${NAME}-${VERSION}-${RELEASE}.x86_64.rpm"
-DEB_NAME="${NAME}_${VERSION}-${RELEASE}_amd64.deb"
+
+if [[ $(uname -m) == "x86_64" ]]; then
+    ARCH=x86_64
+    ARCHDEB=amd64
+else
+    ARCH=aarch64
+    ARCHDEB=arm64
+fi
+
+BIN_PATH="${HOME}/dist/${NAME}-${VERSION}-linux-${ARCH}.tar.gz"
+RPM_NAME="${NAME}-${VERSION}-${RELEASE}.${ARCH}.rpm"
+DEB_NAME="${NAME}_${VERSION}-${RELEASE}_${ARCHDEB}.deb"
 
 rm "dist/${NAME}-${VERSION}-${RELEASE}*"
 rm -rf linux/*
@@ -33,7 +42,7 @@ rm -rf linux/*
 # move binary to build directory
 mkdir -p linux/usr/local/bin
 cp "${BIN_PATH}" linux/usr/local/bin
-tar -xvf "linux/usr/local/bin/${NAME}-${VERSION}-linux-x86_64.tar.gz" -C linux/usr/local/bin/
+tar -xvf "linux/usr/local/bin/${NAME}-${VERSION}-linux-${ARCH}.tar.gz" -C linux/usr/local/bin/
 rm linux/usr/local/bin/*.tar.gz
 chmod +x "linux/usr/local/bin/${NAME}"
 
@@ -62,7 +71,7 @@ fpm \
     --url "${URL}" \
     --license MIT \
     --vendor "${MAINTAINER}" \
-    -a x86_64 \
+    -a "${ARCH}" \
     --rpm-os linux \
     -p "dist/${RPM_NAME}" \
     -n "${NAME}"
@@ -81,7 +90,7 @@ fpm \
     --url "${URL}" \
     --license MIT \
     --vendor "${MAINTAINER}" \
-    -a x86_64 \
+    -a "${ARCHDEB}" \
     -p "dist/${DEB_NAME}" \
     -n "${NAME}"
 
