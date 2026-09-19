@@ -94,6 +94,9 @@ for archname in "${ARCHES[@]}"; do
     mkdir -p linux/usr/share/zsh/site-functions
     curl -f -o "linux/usr/share/zsh/site-functions/_${NAME}" "${RAW_URL}/v${VERSION}/completions/${NAME}_zsh_completion.sh" || { echo 'curl zsh completion download failed' ; exit 1; }
 
+    mkdir -p linux/etc/xonsh/rc.d
+    curl -f -o "linux/etc/xonsh/rc.d/${NAME}.py" "${RAW_URL}/v${VERSION}/completions/${NAME}_xonsh_completion.py" || { echo 'curl xonsh completion download failed' ; exit 1; }
+
     set -eu
 
     echo
