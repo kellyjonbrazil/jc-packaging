@@ -72,7 +72,7 @@ for archname in "${ARCHES[@]}"; do
     RPM_NAME="${NAME}-${VERSION}-${RELEASE}.${ARCH}.rpm"
     DEB_NAME="${NAME}_${VERSION}-${RELEASE}_${ARCHDEB}.deb"
 
-    rm "dist/${NAME}-${VERSION}-${RELEASE}*"
+    rm -f "dist/${RPM_NAME}" "dist/${RPM_NAME}.sha256" "dist/${DEB_NAME}" "dist/${DEB_NAME}.sha256"
     rm -rf linux
     mkdir -p linux
 
