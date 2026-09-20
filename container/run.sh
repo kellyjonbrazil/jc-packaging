@@ -38,8 +38,11 @@ if ! build_log=$("$ENGINE" build --quiet --tag "$IMAGE" "$HERE" 2>&1); then
     exit 1
 fi
 
-# build-packages.sh reads the binaries from ${HOME}/dist and writes to ./dist,
-# so run it as root (HOME=/root) with the binaries mounted read-only there.
+# build-packages.sh reads the binaries from ${HOME}/dist and writes to ./dist.
+# The container's default user is root, whose HOME is /root, so the binaries
+# are mounted read-only at /root/dist. That is root inside the container only:
+# run this script as your normal user, no sudo needed. With rootless podman the
+# files written to $PKG belong to your own user.
 # label=disable avoids SELinux-relabeling the mounts (Fedora).
 exec "$ENGINE" run --rm \
     --security-opt label=disable \
