@@ -85,16 +85,20 @@ for archname in "${ARCHES[@]}"; do
 
     # download man page for this version (version must be tagged in github)
     mkdir -p linux/usr/share/man/man1
+    echo Downloading man file...
     curl -f -o "linux/usr/share/man/man1/${NAME}.1" "${RAW_URL}/v${VERSION}/man/${NAME}.1" || { echo 'curl man download failed' ; exit 1; }
 
     # download shell completions for this version (version must be tagged in github)
     mkdir -p linux/etc/bash_completion.d
+    echo Downloading bash completions...
     curl -f -o "linux/etc/bash_completion.d/${NAME}" "${RAW_URL}/v${VERSION}/completions/${NAME}_bash_completion.sh" || { echo 'curl bash completion download failed' ; exit 1; }
 
     mkdir -p linux/usr/share/zsh/site-functions
+    echo Downloading zsh completions...
     curl -f -o "linux/usr/share/zsh/site-functions/_${NAME}" "${RAW_URL}/v${VERSION}/completions/${NAME}_zsh_completion.sh" || { echo 'curl zsh completion download failed' ; exit 1; }
 
     mkdir -p linux/etc/xonsh/rc.d
+    echo Downloading xonsh completions...
     curl -f -o "linux/etc/xonsh/rc.d/${NAME}.py" "${RAW_URL}/v${VERSION}/completions/${NAME}_xonsh_completion.py" || { echo 'curl xonsh completion download failed' ; exit 1; }
 
     set -eu
