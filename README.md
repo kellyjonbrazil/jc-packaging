@@ -5,7 +5,12 @@ Find the latest `jc` packages at [Github Releases](https://github.com/kellyjonbr
 ## Package build instructions
 
 ### Binaries
-Use the build script or instructions under the `pyoxidizer` folder.
+Linux and macOS: run `static/build-binary.sh <version>`. It links `jc` against
+a current CPython and does not need PyOxidizer; see `static/README.md`.
+
+The `pyoxidizer` folder holds the earlier PyOxidizer builds, which are limited
+to Python 3.10, and the Windows build, which the static build does not cover.
+Use the build script or instructions there.
 
 ### RPM and DEB packages
 Use the `build-packages.sh` script. The binary must exist in `$HOME/dist`.

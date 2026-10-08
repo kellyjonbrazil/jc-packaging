@@ -22,3 +22,4 @@ rpmbuild/RPMS
 rpmbuild/SOURCES
 rpmbuild/SRPMS
 .mypy_cache
+/static/build/
