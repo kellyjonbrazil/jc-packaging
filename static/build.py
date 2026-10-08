@@ -25,6 +25,7 @@ import argparse
 import json
 import marshal
 import os
+import platform
 import re
 import shlex
 import shutil
@@ -197,7 +198,7 @@ def main():
 
     objects = args.objects.resolve()
     info = json.loads((objects / 'PYTHON.json').read_text())
-    running = '.'.join(map(str, sys.version_info[:3]))
+    running = platform.python_version()  # includes any pre-release tag, e.g. 3.15.0rc2
     if info['python_version'] != running:
         sys.exit(f"the objects are CPython {info['python_version']} but this is CPython "
                  f"{running}; run build.py with the matching interpreter")
@@ -264,6 +265,11 @@ def main():
             libs.append(arg)
     libs = [a for arg in libs for a in arg]
     objs = list(dict.fromkeys(objs))
+    # The object list can miss a file (CPython 3.15's JIT shim is only in the
+    # static library). Offering that library last is safe: being an archive,
+    # it contributes only members that resolve a still-undefined symbol.
+    static_lib = build_info['core'].get('static_lib')
+    fallback = [objects / static_lib] if static_lib else []
 
     ldflags = shlex.split(config_vars.get('LDFLAGS') or '')
     ldflags += shlex.split(config_vars.get('LINKFORSHARED') or '')
@@ -274,7 +280,8 @@ def main():
     linked = work / (args.output.name + '.linked')
     print(f'linking {len(objs) + 2} object files (link-time optimization, takes a few minutes)')
     run([args.clang, '-pthread', '-flto=full', *ldflags,
-         work / 'launcher.o', work / 'config.o', f'@{rsp}', *libs, '-lm', '-o', linked])
+         work / 'launcher.o', work / 'config.o', f'@{rsp}', *fallback, *libs, '-lm',
+         '-o', linked])
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if macos:
