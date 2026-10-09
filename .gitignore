@@ -22,4 +22,5 @@ rpmbuild/RPMS
 rpmbuild/SOURCES
 rpmbuild/SRPMS
 .mypy_cache
+.vscode/
 /static/build/
