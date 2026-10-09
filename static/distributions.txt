@@ -8,9 +8,8 @@
 #   llvm     the clang toolchain those object files were compiled with (they
 #            are LLVM bitcode, so the linker needs the same LLVM version)
 #
-# CPython 3.14.8 from python-build-standalone release 20261001. The python and
-# objects hashes come from that release's SHA256SUMS file, the llvm entries
-# from pythonbuild/downloads.json at the same tag.
+# CPython 3.14.8 from python-build-standalone release 20261001.
+# Written by update-pins.sh; run it again rather than editing the lines below.
 
 x86_64-unknown-linux-gnu python b373a4a4e4e70fc05f368c9b53d7738bf37637682b650d96c742805d2da26c32 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz
 x86_64-unknown-linux-gnu objects 0f5cfcf664aa406ee958625ed5b29b1bfc76d553e8ad1304f48fec39b74e0554 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst

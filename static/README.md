@@ -74,16 +74,36 @@ build machine cannot be older than that.
 
 ## Updating Python
 
-Edit `distributions.txt`. For each of the four targets it pins three
-downloads that must go together:
+    static/update-pins.sh <release> <python version>
 
-- `python` and `objects` are the `install_only_stripped` and `pgo+lto-full`
-  archives of one CPython version from one python-build-standalone release.
-  Their hashes are in that release's `SHA256SUMS` file.
-- `llvm` is the toolchain that release was built with. Its URL and hash are
-  in `pythonbuild/downloads.json` at the release's tag, and its version is
-  the `object_file_format` recorded in the archive's `PYTHON.json`. With the
-  wrong version the link step fails with an LLVM bitcode error.
+    e.g.  static/update-pins.sh 20261001 3.14.8
+
+`<release>` is a python-build-standalone release tag, which is a date. The
+[releases page](https://github.com/astral-sh/python-build-standalone/releases)
+lists them with the Python versions each one carries. The script rewrites
+`distributions.txt` and needs `curl`, `git` and `python3`. If the release
+does not have that version, it says which versions it does have and changes
+nothing.
+
+Afterwards rebuild on each machine and check the result (next section)
+before committing the new pins.
+
+A new minor version of Python can also need a small change to `build.py`,
+because CPython's build layout shifts between versions. For 3.15 an object
+file had moved out of the list `build.py` reads.
+
+`distributions.txt` pins three downloads per target, and this is where the
+script gets them, should a line ever need changing by hand:
+
+- `python` and `objects` are the `install_only_stripped.tar.gz` and
+  `pgo+lto-full.tar.zst` archives of one CPython version from one release.
+  Their hashes are in the `SHA256SUMS` file attached to that release.
+- `llvm` is the toolchain the release was compiled with. Its URL and hash are
+  in `pythonbuild/downloads.json` in the python-build-standalone source at
+  the release's tag, under the keys `llvm-x86_64-linux`,
+  `llvm-aarch64-linux`, `llvm-aarch64-macos` and `llvm-x86_64-macos`. It
+  changes far less often than Python does. With the wrong version the link
+  step fails with an LLVM bitcode error.
 
 ## Checking a build
 
