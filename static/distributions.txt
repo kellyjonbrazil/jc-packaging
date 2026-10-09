@@ -1,0 +1,28 @@
+# Pinned downloads for build-binary.sh, one per line:
+#
+#   <target triple> <kind> <sha256> <url>
+#
+#   python   install-only CPython; runs pip and build.py on the build machine
+#   objects  the matching "full" archive: the object files and static
+#            libraries that get linked into the binary
+#   llvm     the clang toolchain those object files were compiled with (they
+#            are LLVM bitcode, so the linker needs the same LLVM version)
+#
+# CPython 3.14.8 from python-build-standalone release 20261001.
+# Written by update-pins.sh; run it again rather than editing the lines below.
+
+x86_64-unknown-linux-gnu python b373a4a4e4e70fc05f368c9b53d7738bf37637682b650d96c742805d2da26c32 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz
+x86_64-unknown-linux-gnu objects 0f5cfcf664aa406ee958625ed5b29b1bfc76d553e8ad1304f48fec39b74e0554 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst
+x86_64-unknown-linux-gnu llvm 0ee8e4f89c20983d62547b1e665147ee08a7413f478e9e443fa991548da1030d https://github.com/indygreg/toolchain-tools/releases/download/toolchain-bootstrap%2F20260410/llvm-22.1.3%2B20260410-gnu_only-x86_64-unknown-linux-gnu.tar.zst
+
+aarch64-unknown-linux-gnu python 4395ae16388f9d3409cba7e20161753ed3359b13d959345415029f874f675162 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz
+aarch64-unknown-linux-gnu objects 15f23cb65278486f65c718e0fe706d131dd25ffb8bed99ef5676daf4ffebd9d3 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-aarch64-unknown-linux-gnu-pgo%2Blto-full.tar.zst
+aarch64-unknown-linux-gnu llvm 9cb4b562323a3d899fffe6393148e92447e17b69a2501d7c6e7f2a86c32cddc1 https://github.com/indygreg/toolchain-tools/releases/download/toolchain-bootstrap%2F20260410/llvm-22.1.3%2B20260410-gnu_only-aarch64-unknown-linux-gnu.tar.zst
+
+aarch64-apple-darwin python 69e48cd7f54261df5b6abbd374f69fe6e496fa781d271592aeef49cd5ffbea6c https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-aarch64-apple-darwin-install_only_stripped.tar.gz
+aarch64-apple-darwin objects 1135418d10836dc2ca298391f0a30901015017eacb98a3caf40b1cb29aa405ba https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-aarch64-apple-darwin-pgo%2Blto-full.tar.zst
+aarch64-apple-darwin llvm 98171836c31c04edec074e5f3fee67fcace4bf3859b68a770dd9ff2039ea127d https://github.com/indygreg/toolchain-tools/releases/download/toolchain-bootstrap%2F20260410/llvm-22.1.3%2B20260410-aarch64-apple-darwin.tar.zst
+
+x86_64-apple-darwin python d613a1cb9e31dd512298c73fd300975e689938cc39d1486250cf47918963061c https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-apple-darwin-install_only_stripped.tar.gz
+x86_64-apple-darwin objects 6533ea7109c5f808dec73766bb520e6df14890cfcfe76c8b900c46603056cc55 https://github.com/astral-sh/python-build-standalone/releases/download/20261001/cpython-3.14.8%2B20261001-x86_64-apple-darwin-pgo%2Blto-full.tar.zst
+x86_64-apple-darwin llvm 15bfda1bc8bc920658c09ef1ebb4593f0705b3314beab23989f14775f2e3f3f0 https://github.com/indygreg/toolchain-tools/releases/download/toolchain-bootstrap%2F20260410/llvm-22.1.3%2B20260410-x86_64-apple-darwin.tar.zst

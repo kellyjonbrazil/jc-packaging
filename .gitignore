@@ -21,4 +21,7 @@ rpmbuild/BUILDROOT
 rpmbuild/RPMS
 rpmbuild/SOURCES
 rpmbuild/SRPMS
+.DS_Store
 .mypy_cache
+.vscode/
+/static/build/
