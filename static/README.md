@@ -39,7 +39,7 @@ Downloads are unpacked under `~/.cache/jc-static`, up to 2.1 GB.
 | `JC_STATIC_CACHE` | Where the downloads are unpacked. Default `$HOME/.cache/jc-static`. |
 | `JC_SITE_DIR` | A folder with `jc` and its dependencies already installed (`pip install --target`). Skips the pip step, for offline builds or an unreleased `jc`. |
 | `JC_CORE_ARCHIVE` | Linux only. A core archive made by `build-core.sh` on another machine, if it is not in the cache folder. |
-| `JC_MAX_GLIBC` | Linux only. The build fails if the binary needs a newer glibc than this. Default `2.28`; `any` disables the check. |
+| `JC_MAX_GLIBC` | Linux only. The build fails if the binary needs a newer glibc than this. Default `2.35`; `any` disables the check. |
 
 ## The core, and old Linux build machines
 
