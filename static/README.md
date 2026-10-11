@@ -28,7 +28,9 @@ The build machine needs:
 
 On Linux the first run also builds the *core* (next section), which downloads
 about 430 MB and takes a few minutes. After that a build takes a few seconds.
-On macOS every build links CPython from scratch and takes a few minutes.
+On macOS every build links CPython from scratch and takes a few minutes. The
+linker warns there that `-stack_size` is not implemented; that is expected,
+and python-build-standalone's own interpreter is linked the same way.
 Downloads are unpacked under `~/.cache/jc-static`, up to 2.1 GB.
 
 | Variable | Purpose |

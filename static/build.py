@@ -149,6 +149,51 @@ def write_payload_asm(macos, out):
     out.write_text('\n'.join(lines) + '\n')
 
 
+# Options that name a folder on the machine CPython was built on.
+FOREIGN_PATH_OPTIONS = ('-isysroot', '--sysroot', '-L', '-F')
+
+
+def without_foreign_paths(flags):
+    """Drop the search paths of the machine that built CPython.
+
+    The link flags in core.json are the ones the interpreter itself was
+    linked with, and python-build-standalone does not always clean them: the
+    Intel macOS build keeps "-isysroot <its Xcode SDK>" and "-L<its temporary
+    folder>". Neither exists here, and the first one hides this machine's SDK
+    from the linker. Nothing this build links is found through these paths:
+    CPython's libraries are passed by file name, the rest are system
+    libraries.
+    """
+    kept = []
+    flags = iter(flags)
+    for flag in flags:
+        option = next((o for o in FOREIGN_PATH_OPTIONS if flag.startswith(o)), None)
+        if option is None:
+            kept.append(flag)
+        elif flag == option:
+            next(flags, None)  # the path is the next argument
+    return kept
+
+
+def use_macos_sdk():
+    """Point the compiler at the macOS SDK, unless SDKROOT already does.
+
+    The pinned clang is not Apple's and does not look for the SDK by itself.
+    build-binary.sh sets SDKROOT; this covers running build.py by hand.
+    """
+    if os.environ.get('SDKROOT'):
+        return
+    try:
+        sdk = subprocess.run(['xcrun', '--show-sdk-path'], stdout=subprocess.PIPE,
+                             universal_newlines=True).stdout.strip()
+    except FileNotFoundError:
+        sdk = ''
+    if not sdk:
+        sys.exit('cannot find the macOS SDK; install the Xcode command line tools '
+                 '(xcode-select --install) or set SDKROOT')
+    os.environ['SDKROOT'] = sdk
+
+
 def run(cmd, cwd=None):
     try:
         result = subprocess.run([str(c) for c in cmd], cwd=cwd)
@@ -195,6 +240,8 @@ def main():
     write_payload(compile_modules(roots), args.run, work / 'payload.bin')
 
     # 2. payload.bin as an object file
+    if macos:
+        use_macos_sdk()
     write_payload_asm(macos, work / 'payload.s')
     assemble = core['assemble'] or ['as']
     run([*assemble, '-o', 'payload.o', 'payload.s'], cwd=work)  # cwd: .incbin is relative
@@ -204,8 +251,8 @@ def main():
         return str(core_dir / arg) if (core_dir / arg).is_file() else arg
     cc = core['cc'] or args.cc or 'cc'
     linked = work / (args.output.name + '.linked')
-    run([cc, *core['flags'], *map(in_core, core['inputs']), work / 'payload.o',
-         *core['libs'], '-o', linked])
+    run([cc, *without_foreign_paths(core['flags']), *map(in_core, core['inputs']),
+         work / 'payload.o', *core['libs'], '-o', linked])
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if core['strip']:
