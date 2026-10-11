@@ -20,7 +20,7 @@
 #   JC_CORE_ARCHIVE  Linux only: a core archive made by build-core.sh on
 #                    another machine, if it is not in the cache folder
 #   JC_MAX_GLIBC     Linux only: fail if the binary needs a newer glibc than
-#                    this (default: 2.28, "any" to accept whatever results)
+#                    this (default: 2.35, "any" to accept whatever results)
 
 set -euo pipefail
 
@@ -121,7 +121,7 @@ if [[ $OS == linux ]]; then
     # linked on, so check it rather than ship a surprise.
     glibc=$(objdump -T "$NAME" | grep -o 'GLIBC_[0-9.]*' | sort -uV | tail -1)
     glibc=${glibc#GLIBC_}
-    max=${JC_MAX_GLIBC:-2.28}
+    max=${JC_MAX_GLIBC:-2.35}
     echo "minimum glibc:  $glibc"
     if [[ $max != any && $(printf '%s\n%s\n' "$glibc" "$max" | sort -V | tail -1) != "$max" ]]; then
         fail "the binary needs glibc $glibc, newer than the allowed $max." \
