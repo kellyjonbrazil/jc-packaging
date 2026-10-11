@@ -17,8 +17,10 @@
 #   JC_STATIC_CACHE  where downloads are unpacked (default: $HOME/.cache/jc-static)
 #   JC_SITE_DIR      folder with jc and its dependencies already installed;
 #                    skips the pip step (offline builds, unreleased versions)
+#   JC_CORE_ARCHIVE  Linux only: a core archive made by build-core.sh on
+#                    another machine, if it is not in the cache folder
 #   JC_MAX_GLIBC     Linux only: fail if the binary needs a newer glibc than
-#                    this (default: 2.28, "any" to accept whatever results)
+#                    this (default: 2.35, "any" to accept whatever results)
 
 set -euo pipefail
 
@@ -29,107 +31,54 @@ fi
 
 NAME=jc
 VERSION=$1
-HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-CACHE=${JC_STATIC_CACHE:-$HOME/.cache/jc-static}
+
+source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+
 DIST=${JC_DIST:-$HOME/dist}
 BUILD=$HERE/build
 
-case "$(uname -s)" in
-    Linux)
-        OS=linux
-        PLATFORM=unknown-linux-gnu
-        SHA256="sha256sum"
-        ;;
-    Darwin)
-        OS=darwin
-        PLATFORM=apple-darwin
-        SHA256="shasum -a 256"
-        # The toolchain is not Apple's clang, so tell it where the SDK is.
-        SDKROOT=${SDKROOT:-$(xcrun --show-sdk-path)}
-        export SDKROOT
-        ;;
-    *)
-        echo "Unsupported operating system: $(uname -s)"
-        exit 1
-        ;;
-esac
-
-# Under Rosetta uname reports x86_64, which builds the Intel macOS binary.
-case "$(uname -m)" in
-    x86_64)
-        ARCH=x86_64
-        ;;
-    aarch64 | arm64)
-        ARCH=aarch64
-        ;;
-    *)
-        echo "Unsupported architecture: $(uname -m)"
-        exit 1
-        ;;
-esac
-
-TRIPLE=$ARCH-$PLATFORM
-
-# fetch <kind>
-# Download, verify and unpack the archive pinned in distributions.txt for this
-# machine, unless that was already done, and print the folder it is in.
-# It runs inside $(...), where bash does not apply "set -e", so every step
-# checks for failure itself.
-fetch() {
-    local kind=$1 sha="" url="" dir file
-    read -r sha url < <(awk -v triple="$TRIPLE" -v kind="$kind" \
-        '$1 == triple && $2 == kind { print $3, $4 }' "$HERE/distributions.txt") || true
-    if [[ $url == "" ]]; then
-        echo "error: no $kind download is pinned for $TRIPLE in distributions.txt" >&2
-        exit 1
-    fi
-
-    dir=$CACHE/$sha
-    if [[ ! -e $dir/.unpacked ]]; then
-        file=$CACHE/${url##*/}.part
-        echo "Downloading ${url##*/}" >&2
-        mkdir -p "$CACHE" || exit 1
-        curl -fsSL --retry 3 -o "$file" "$url" || exit 1
-        echo "$sha  $file" | $SHA256 -c - >&2 || exit 1
-
-        rm -rf "$dir"
-        mkdir -p "$dir" || exit 1
-        case $url in
-            *.tar.gz)
-                tar -xzf "$file" -C "$dir" || exit 1
-                ;;
-            *.tar.zst)
-                # CPython 3.14 reads zstandard itself, so no zstd tool is needed.
-                "$PYTHON" -I -c '
-import sys, tarfile
-from compression import zstd
-with zstd.open(sys.argv[1], "rb") as z, tarfile.open(fileobj=z, mode="r|") as t:
-    t.extractall(sys.argv[2], filter="tar")
-' "$file" "$dir" || exit 1
-                ;;
-            *)
-                echo "error: do not know how to unpack ${url##*/}" >&2
-                exit 1
-                ;;
-        esac
-        rm -f "$file"
-        touch "$dir/.unpacked" || exit 1
-    fi
-    echo "$dir"
-}
-
-fail() {
-    echo
-    echo "error: $*" >&2
-    exit 1
-}
-
 PYTHON=$(fetch python)/python/bin/python3
-OBJECTS=$(fetch objects)/python
-CLANG=$(fetch llvm)/llvm/bin/clang
 
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
+
+if [[ $OS == linux ]]; then
+    # CPython and the launcher come pre-linked as the core, so that this
+    # machine only needs its own assembler and linker. Use the cached core,
+    # or one copied from another machine, or build it now.
+    CORE=$CACHE/$CORE_NAME
+    if [[ ! -e $CORE/core.json ]]; then
+        ARCHIVE=${JC_CORE_ARCHIVE:-$CACHE/jc-$CORE_NAME.tar.gz}
+        if [[ -e $ARCHIVE ]]; then
+            echo "Unpacking $ARCHIVE"
+            tar -xzf "$ARCHIVE" -C "$CACHE"
+            [[ -e $CORE/core.json ]] || fail "$ARCHIVE is not the core this build needs" \
+                "($CORE_NAME). It was made from different pins or scripts; build it" \
+                "again with build-core.sh from this checkout."
+        elif [[ ${JC_CORE_ARCHIVE:-} != "" ]]; then
+            fail "JC_CORE_ARCHIVE is set but $ARCHIVE does not exist"
+        else
+            "$HERE/build-core.sh"
+        fi
+    fi
+
+    # The C compiler driver is only used to run the linker.
+    LLVM_DIR=$CACHE/$(pin llvm | cut -d' ' -f1)
+    if command -v cc > /dev/null; then
+        CC=cc
+    elif [[ -x $LLVM_DIR/llvm/bin/clang ]]; then
+        CC=$LLVM_DIR/llvm/bin/clang
+    else
+        fail "no C compiler driver (cc) found. Install gcc; it is only used to link."
+    fi
+else
+    # macOS links CPython's object files directly, with the pinned clang.
+    OBJECTS=$(fetch objects)/python
+    CLANG=$(fetch llvm)/llvm/bin/clang
+    CORE=$BUILD/core
+    CC=$CLANG
+    "$PYTHON" -I "$HERE/build-core.py" --objects "$OBJECTS" --clang "$CLANG" --output "$CORE"
+fi
 
 if [[ ${JC_SITE_DIR:-} != "" ]]; then
     SITE=$JC_SITE_DIR
@@ -139,9 +88,12 @@ else
         --target "$SITE" -r "$HERE/requirements.txt" "$NAME==$VERSION"
 fi
 
-"$PYTHON" -I "$HERE/build.py" \
-    --objects "$OBJECTS" \
-    --clang "$CLANG" \
+# A private bytecode cache makes the interpreter start in the same state on
+# every run, which keeps the embedded bytecode, and so the binary, identical
+# from build to build.
+"$PYTHON" -I -X pycache_prefix="$BUILD/pycache" "$HERE/build.py" \
+    --core "$CORE" \
+    --cc "$CC" \
     --source "$SITE" \
     --run "import jc.cli; jc.cli.main()" \
     --output "$BUILD/$NAME" \
@@ -167,9 +119,9 @@ echo "$about" | sed -n '1,2p'
 if [[ $OS == linux ]]; then
     # The oldest glibc the binary runs on is decided by the machine it was
     # linked on, so check it rather than ship a surprise.
-    glibc=$("$(dirname "$CLANG")/llvm-objdump" -T "$NAME" | grep -o 'GLIBC_[0-9.]*' | sort -uV | tail -1)
+    glibc=$(objdump -T "$NAME" | grep -o 'GLIBC_[0-9.]*' | sort -uV | tail -1)
     glibc=${glibc#GLIBC_}
-    max=${JC_MAX_GLIBC:-2.28}
+    max=${JC_MAX_GLIBC:-2.35}
     echo "minimum glibc:  $glibc"
     if [[ $max != any && $(printf '%s\n%s\n' "$glibc" "$max" | sort -V | tail -1) != "$max" ]]; then
         fail "the binary needs glibc $glibc, newer than the allowed $max." \
