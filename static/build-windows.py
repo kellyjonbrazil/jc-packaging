@@ -7,7 +7,7 @@ Windows CPython it builds against:
 
     python3.14 build-windows.py --version 1.26.2 --python <Windows CPython> \\
         --mingw <llvm-mingw> --site <jc + dependencies for Windows> \\
-        --build build/windows --dist ~/dist
+        --build build/x86_64-pc-windows-msvc --dist ~/dist
 
 python-build-standalone has no statically linked Windows CPython, so the
 result cannot be one file. It is as close as Windows allows: jc.exe carries

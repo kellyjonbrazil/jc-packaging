@@ -35,7 +35,8 @@ VERSION=$1
 source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 DIST=${JC_DIST:-$HOME/dist}
-BUILD=$HERE/build
+# One folder per target, so builds for different targets can run at once.
+BUILD=$HERE/build/$TRIPLE
 
 PYTHON=$(fetch python)/python/bin/python3
 
@@ -48,18 +49,30 @@ if [[ $OS == linux ]]; then
     # or one copied from another machine, or build it now.
     CORE=$CACHE/$CORE_NAME
     if [[ ! -e $CORE/core.json ]]; then
+        lock "$CORE_NAME"
+    fi
+    # Check again: another build may have made it while this one waited.
+    if [[ ! -e $CORE/core.json ]]; then
         ARCHIVE=${JC_CORE_ARCHIVE:-$CACHE/jc-$CORE_NAME.tar.gz}
         if [[ -e $ARCHIVE ]]; then
             echo "Unpacking $ARCHIVE"
-            tar -xzf "$ARCHIVE" -C "$CACHE"
-            [[ -e $CORE/core.json ]] || fail "$ARCHIVE is not the core this build needs" \
-                "($CORE_NAME). It was made from different pins or scripts; build it" \
-                "again with build-core.sh from this checkout."
+            UNPACK=$CACHE/$CORE_NAME.unpack
+            rm -rf "$UNPACK" "$CORE"
+            mkdir -p "$UNPACK"
+            tar -xzf "$ARCHIVE" -C "$UNPACK"
+            [[ -e $UNPACK/$CORE_NAME/core.json ]] || fail "$ARCHIVE is not the core this" \
+                "build needs ($CORE_NAME). It was made from different pins or scripts;" \
+                "build it again with build-core.sh from this checkout."
+            mv "$UNPACK/$CORE_NAME" "$CORE"
+            rm -rf "$UNPACK"
         elif [[ ${JC_CORE_ARCHIVE:-} != "" ]]; then
             fail "JC_CORE_ARCHIVE is set but $ARCHIVE does not exist"
         else
-            "$HERE/build-core.sh"
+            JC_CORE_LOCKED=1 "$HERE/build-core.sh"
         fi
+    fi
+    if [[ $LOCK != "" ]]; then
+        unlock
     fi
 
     # The C compiler driver is only used to run the linker.

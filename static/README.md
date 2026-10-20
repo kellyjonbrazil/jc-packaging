@@ -36,6 +36,14 @@ linker warns there that `-stack_size` is not implemented; that is expected,
 and python-build-standalone's own interpreter is linked the same way.
 Downloads are unpacked under `~/.cache/jc-static`, up to 2.1 GB.
 
+Each build works in its own folder, `static/build/<target>`, where
+`<target>` is the target triple such as `aarch64-apple-darwin`, and leaves
+the others alone. So builds for different targets can run at the same time,
+from one checkout or several: the Apple Silicon and Rosetta macOS builds and
+the Windows build together, say. The cache is shared safely too: when two
+builds need the same download or Linux core, one fetches or makes it while
+the other waits. Two builds for the same target need two checkouts.
+
 | Variable | Purpose |
 | --- | --- |
 | `JC_DIST` | Output folder. Default `$HOME/dist`. |
@@ -86,7 +94,8 @@ the build asks for the new one instead.
    for the core also CPython's object files and the matching clang.
 2. `build-core.py` picks the built-in extension modules, compiles
    `launcher.c`, and on Linux pre-links everything into `core.o`.
-3. pip installs `jc==<version>` and `requirements.txt` into `build/site`.
+3. pip installs `jc==<version>` and `requirements.txt` into
+   `static/build/<target>/site`.
 4. `build.py` compiles those modules and the standard library to bytecode,
    packs them into one blob with the statement to run, and links the blob
    with the core.
@@ -158,16 +167,16 @@ script gets them, should a line ever need changing by hand:
 `compare-binaries.py` runs two binaries over the fixtures in a `jc` checkout
 and reports any difference in output or exit code:
 
-    static/compare-binaries.py <reference jc> static/build/jc <jc checkout>
+    static/compare-binaries.py <reference jc> static/build/<target>/jc <jc checkout>
 
 To run `jc`'s own unit tests inside the frozen interpreter, link a variant
 that executes its first argument and point it at the tests. `<python>` is the
 cache folder named after the hash of the `python` line in
 `distributions.txt`, and `<core>` is the `core-<target>-<id>` folder beside
-it (on macOS, `static/build/core`):
+it (on macOS, `static/build/<target>/core`):
 
     <python>/python/bin/python3 static/build.py --core <core> \
-        --source static/build/site --run "import sys; exec(sys.argv.pop(1))" \
+        --source static/build/<target>/site --run "import sys; exec(sys.argv.pop(1))" \
         --output /tmp/jc-test
     /tmp/jc-test "import unittest; unittest.main(module=None)" \
         discover -s <jc checkout>/tests -t <jc checkout>
@@ -232,14 +241,14 @@ and `msiexec /i jc-<version>.msi /qn` installs silently.
    python`) and llvm-mingw for this machine (`mingw`). The two CPythons must
    be the same version; `update-pins.sh` pins them from the same release.
 2. pip installs `jc` and `requirements.txt` as Windows wheels into
-   `build/windows/site`.
+   `static/build/x86_64-pc-windows-msvc/site`.
 3. `build-windows.py` compiles `launcher-windows.c`, the Windows twin of
    `launcher.c`, with llvm-mingw, then runs `build.py` to embed the modules,
    taking the standard library from the Windows CPython, and to link
    `jc.exe` against `python314.dll`. The launcher puts `jclib` on `sys.path`
    for the extension modules; everything else is frozen.
 4. It picks the DLLs and extension modules, writes the zip, and writes
-   `build/windows/jc.wxs`, from which `wixl` makes the MSI.
+   `jc.wxs` to the build folder, from which `wixl` makes the MSI.
 5. If Wine is installed, `build-windows.sh` runs the same checks on `jc.exe`
    as `build-binary.sh`. Otherwise check a new build on Windows:
 

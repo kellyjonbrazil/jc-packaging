@@ -33,7 +33,8 @@ WINDOWS_TRIPLE=x86_64-pc-windows-msvc
 source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 DIST=${JC_DIST:-$HOME/dist}
-BUILD=$HERE/build/windows
+# One folder per target, so builds for different targets can run at once.
+BUILD=$HERE/build/$WINDOWS_TRIPLE
 
 # The MSI is written by wixl, from msitools. Check for it before the long part.
 if [[ ${JC_NO_MSI:-} != 1 ]] && ! command -v wixl > /dev/null; then

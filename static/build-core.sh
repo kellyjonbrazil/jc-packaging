@@ -42,6 +42,11 @@ PYTHON=$(fetch python)/python/bin/python3
 OBJECTS=$(fetch objects)/python
 CLANG=$(fetch llvm)/llvm/bin/clang
 
+# build-binary.sh holds this lock already when it runs this script.
+if [[ ${JC_CORE_LOCKED:-} != 1 ]]; then
+    lock "$CORE_NAME"
+fi
+
 rm -rf "$CACHE/$CORE_NAME" "$CACHE/$CORE_NAME.tmp"
 "$PYTHON" -I "$HERE/build-core.py" \
     --objects "$OBJECTS" \

@@ -55,11 +55,48 @@ pin() {
         '$1 == triple && $2 == kind { print $3, $4 }' "$HERE/distributions.txt"
 }
 
+# lock <name>
+# Wait until no other build holds <name> in the cache folder, then hold it
+# until unlock is called or this shell exits. This is what lets several
+# builds, from one checkout or several, share the cache at the same time:
+# only one of them downloads a file or makes a core, and the others wait for
+# it. A lock left by a build that was killed is taken over, because the
+# process that held it is gone.
+LOCK=""
+lock() {
+    local dir=$CACHE/$1.lock owner waited=""
+    mkdir -p "$CACHE" || exit 1
+    until mkdir "$dir" 2> /dev/null; do
+        owner=$(cat "$dir/pid" 2> /dev/null || true)
+        if [[ $owner != "" ]] && ! kill -0 "$owner" 2> /dev/null; then
+            rm -rf "$dir"
+            continue
+        fi
+        if [[ $waited == "" ]]; then
+            echo "Waiting for another build to finish with $1" >&2
+            waited=1
+        fi
+        sleep 2
+    done
+    # $$ is the build script itself, also inside $(...), so the lock is
+    # taken over only once that script has ended.
+    echo $$ > "$dir/pid"
+    LOCK=$dir
+    trap 'rm -rf "$LOCK"' EXIT
+}
+
+unlock() {
+    rm -rf "$LOCK"
+    LOCK=""
+    trap - EXIT
+}
+
 # fetch <kind>
 # Download, verify and unpack the archive pinned in distributions.txt for this
 # machine, unless that was already done, and print the folder it is in.
 # It runs inside $(...), where bash does not apply "set -e", so every step
-# checks for failure itself.
+# checks for failure itself, and where the lock it may take is released when
+# it returns.
 fetch() {
     local kind=$1 sha="" url="" dir file
     read -r sha url < <(pin "$kind") || true
@@ -69,6 +106,11 @@ fetch() {
     fi
 
     dir=$CACHE/$sha
+    if [[ ! -e $dir/.unpacked ]]; then
+        # Another build may be fetching the same file: wait for it, then
+        # check again. The lock is released when this subshell exits.
+        lock "$sha"
+    fi
     if [[ ! -e $dir/.unpacked ]]; then
         file=$CACHE/${url##*/}.part
         echo "Downloading ${url##*/}" >&2
