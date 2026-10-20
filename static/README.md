@@ -189,7 +189,10 @@ it (on macOS, `static/build/<target>/core`):
 
 Run it on Linux or macOS. It writes `jc-<version>-windows.zip` and
 `jc-<version>.msi` for 64-bit Windows to `$HOME/dist`, the names the
-PyOxidizer build used. A build takes under a minute. The first one
+PyOxidizer build used, with `jc-<version>-windows.sha256` holding the
+checksum of `jc.exe`, as the Linux and macOS `.sha256` files hold the
+binary's, and `jc-<version>.msi.sha256` the installer's, as for the RPM and
+DEB packages. A build takes under a minute. The first one
 downloads the Windows CPython and the llvm-mingw toolchain, about 105 MB on
 Linux and 150 MB on macOS, into the same cache as `build-binary.sh`.
 

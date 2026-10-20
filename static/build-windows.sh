@@ -10,7 +10,10 @@
 # build-windows.sh 1.26.2
 #
 # Writes jc-<version>-windows.zip and jc-<version>.msi to $HOME/dist, the
-# names the PyOxidizer Windows build used.
+# names the PyOxidizer Windows build used, with checksums as the other
+# builds write them: jc-<version>-windows.sha256 for the executable in the
+# zip, like the Linux and macOS binaries, and jc-<version>.msi.sha256 for the
+# installer, like the RPM and DEB packages.
 #
 # Optional environment variables:
 #   JC_DIST          output folder (default: $HOME/dist)
@@ -94,8 +97,12 @@ else
     echo "note: jc.exe was not run, as Wine is not installed. Check it on Windows."
 fi
 
+# The checksum of the executable, as for the Linux and macOS binaries.
+(cd "$STAGE" && $SHA256 "$NAME.exe") > "$DIST/$NAME-$VERSION-windows.sha256"
+
 if [[ ${JC_NO_MSI:-} != 1 ]]; then
     wixl -a x64 -o "$DIST/$NAME-$VERSION.msi" "$BUILD/$NAME.wxs"
+    (cd "$DIST" && $SHA256 "$NAME-$VERSION.msi") > "$DIST/$NAME-$VERSION.msi.sha256"
     echo
     echo "Built $DIST/$NAME-$VERSION-windows.zip and $DIST/$NAME-$VERSION.msi"
 else
