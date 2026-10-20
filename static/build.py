@@ -19,6 +19,9 @@ What it does, in order:
 
 Steps 2 and 3 need only an assembler and a C compiler driver to link with,
 whatever the system has, which is what lets this run on old distributions.
+
+build-windows.py runs it to build jc.exe, with --stdlib pointing at the
+Windows CPython's standard library.
 """
 import argparse
 import json
@@ -136,11 +139,16 @@ def write_payload(entries, run_command, out):
             f.write(entries[name][1])
 
 
-def write_payload_asm(macos, out):
+def write_payload_asm(os_name, out):
     """Write the assembler file that places payload.bin in the executable."""
-    if macos:
+    if os_name == 'macos':
         lines = ['.section __TEXT,__const', '.globl _app_payload', '.globl _app_payload_end',
                  '.p2align 4', '_app_payload:', '.incbin "payload.bin"', '_app_payload_end:']
+    elif os_name == 'windows':
+        # Read-only data. 64-bit Windows symbols carry no leading underscore.
+        lines = ['.section .rdata$app_payload,"dr"', '.globl app_payload',
+                 '.globl app_payload_end', '.p2align 4', 'app_payload:',
+                 '.incbin "payload.bin"', 'app_payload_end:']
     else:
         lines = ['.section .rodata.app_payload,"a",%progbits', '.globl app_payload',
                  '.globl app_payload_end', '.balign 16', 'app_payload:',
@@ -214,6 +222,9 @@ def main():
     p.add_argument('--work', type=Path, help='scratch folder (default: <output>.build)')
     p.add_argument('--cc', help='C compiler driver to link with, where the core does not '
                                 'name one (default: cc)')
+    p.add_argument('--stdlib', type=Path,
+                   help="standard library folder to embed (default: this interpreter's); "
+                        'set when building for another platform')
     args = p.parse_args()
 
     core_dir = args.core.resolve()
@@ -222,12 +233,15 @@ def main():
     if core['python_version'] != running:
         sys.exit(f"the core is CPython {core['python_version']} but this is CPython "
                  f"{running}; run build.py with the matching interpreter")
-    macos = 'apple-darwin' in core['target_triple']
+    triple = core['target_triple']
+    os_name = 'macos' if 'apple-darwin' in triple else 'windows' if 'windows' in triple else 'linux'
     work = (args.work or args.output.with_name(args.output.name + '.build')).resolve()
     work.mkdir(parents=True, exist_ok=True)
 
     # 1. python modules
-    stdlib = Path(sysconfig.get_paths()['stdlib'])
+    # The pure-Python standard library is the same on every platform, but
+    # building for another one should embed that platform's copy all the same.
+    stdlib = (args.stdlib or Path(sysconfig.get_paths()['stdlib'])).resolve()
     excluded = EXCLUDED_STDLIB | set(core['excluded_stdlib'])
     excluded |= {d.name for d in stdlib.iterdir() if d.name.startswith('config-')}
     roots = [(src.resolve(), (), ()) for src in args.source]
@@ -240,9 +254,9 @@ def main():
     write_payload(compile_modules(roots), args.run, work / 'payload.bin')
 
     # 2. payload.bin as an object file
-    if macos:
+    if os_name == 'macos':
         use_macos_sdk()
-    write_payload_asm(macos, work / 'payload.s')
+    write_payload_asm(os_name, work / 'payload.s')
     assemble = core['assemble'] or ['as']
     run([*assemble, '-o', 'payload.o', 'payload.s'], cwd=work)  # cwd: .incbin is relative
 
@@ -250,8 +264,9 @@ def main():
     def in_core(arg):
         return str(core_dir / arg) if (core_dir / arg).is_file() else arg
     cc = core['cc'] or args.cc or 'cc'
+    cc = cc if isinstance(cc, list) else [cc]  # a command with its own arguments
     linked = work / (args.output.name + '.linked')
-    run([cc, *without_foreign_paths(core['flags']), *map(in_core, core['inputs']),
+    run([*cc, *without_foreign_paths(core['flags']), *map(in_core, core['inputs']),
          work / 'payload.o', *core['libs'], '-o', linked])
 
     args.output.parent.mkdir(parents=True, exist_ok=True)

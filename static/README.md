@@ -9,6 +9,9 @@ which is the same source of interpreters PyOxidizer used.
 The result behaves like the PyOxidizer binary: one executable, every module
 loaded from memory, nothing unpacked to disk at startup.
 
+The Windows `.zip` and `.msi` are built the same way, from Linux or macOS;
+see [Windows](#windows) at the end.
+
 ## Building
 
     static/build-binary.sh <version>
@@ -171,6 +174,91 @@ it (on macOS, `static/build/core`):
 
 ## Windows
 
-Not covered. python-build-standalone no longer publishes statically linked
-Windows builds, so a Windows binary cannot be a single file this way. The
-`pyoxidizer/windows` build is unchanged.
+    static/build-windows.sh <version>
+
+    e.g.  static/build-windows.sh 1.26.2
+
+Run it on Linux or macOS. It writes `jc-<version>-windows.zip` and
+`jc-<version>.msi` for 64-bit Windows to `$HOME/dist`, the names the
+PyOxidizer build used. A build takes under a minute. The first one
+downloads the Windows CPython and the llvm-mingw toolchain, about 105 MB on
+Linux and 150 MB on macOS, into the same cache as `build-binary.sh`.
+
+The build machine needs `bash`, `curl`, `tar` and, for the `.msi`, `wixl`
+from msitools (`brew install msitools`, `apt install wixl` or
+`dnf install msitools`). Set `JC_NO_MSI=1` to make only the zip. `JC_DIST`,
+`JC_STATIC_CACHE` and `JC_SITE_DIR` work as for `build-binary.sh`; a
+`JC_SITE_DIR` must hold the Windows wheels, which is what
+`pip install --platform win_amd64 --only-binary=:all: --target` installs.
+
+The llvm-mingw toolchain it uses runs on glibc 2.34 or newer, so on Linux use
+a current distribution or container, not the CentOS 7 machine. Unlike the
+Linux binary, nothing about the result depends on the build machine: the
+same inputs give a byte-for-byte identical `jc.exe` everywhere.
+
+### What it builds
+
+python-build-standalone publishes no statically linked Windows CPython, so
+`jc.exe` cannot be one file. It is as close as Windows allows: `jc.exe`
+carries `jc`, its dependencies and the standard library as frozen modules,
+exactly like the Linux and macOS binaries, and beside it are
+
+    jc.exe
+    python314.dll                 CPython
+    vcruntime140.dll              the Visual C++ runtime python314.dll needs
+    vcruntime140_1.dll
+    jclib\*.pyd                   the extension modules not built into the DLL
+    COPYING.txt                   licenses of jc, its dependencies and Python
+
+which is the layout of the PyOxidizer build, minus OpenSSL, SQLite, Tcl/Tk
+and libffi. The rule matches the other platforms: an extension module is
+shipped unless it needs a DLL from the distribution other than CPython's own
+and the runtime, which leaves out `_ssl`, `_hashlib`, `_sqlite3`, `_tkinter`
+and `_ctypes`. The test helpers and `_remote_debugging` are left out too.
+`build-windows.py` reads what each file imports to decide, and fails if
+`jc.exe` would need anything that is not shipped or part of Windows 10.
+
+The MSI installs the same files to `Program Files\jc` and adds that folder to
+the end of the system `PATH`, as the PyOxidizer MSI did. It keeps that MSI's
+upgrade code, so installing it over a PyOxidizer-built `jc` replaces it
+rather than installing a second copy. Unlike the PyOxidizer MSI it has no
+setup dialogs: double-clicking it shows a progress bar and the UAC prompt,
+and `msiexec /i jc-<version>.msi /qn` installs silently.
+
+### How it works
+
+1. `build-windows.sh` downloads and unpacks what `distributions.txt` pins:
+   this machine's CPython, the Windows CPython (`x86_64-pc-windows-msvc
+   python`) and llvm-mingw for this machine (`mingw`). The two CPythons must
+   be the same version; `update-pins.sh` pins them from the same release.
+2. pip installs `jc` and `requirements.txt` as Windows wheels into
+   `build/windows/site`.
+3. `build-windows.py` compiles `launcher-windows.c`, the Windows twin of
+   `launcher.c`, with llvm-mingw, then runs `build.py` to embed the modules,
+   taking the standard library from the Windows CPython, and to link
+   `jc.exe` against `python314.dll`. The launcher puts `jclib` on `sys.path`
+   for the extension modules; everything else is frozen.
+4. It picks the DLLs and extension modules, writes the zip, and writes
+   `build/windows/jc.wxs`, from which `wixl` makes the MSI.
+5. If Wine is installed, `build-windows.sh` runs the same checks on `jc.exe`
+   as `build-binary.sh`. Otherwise check a new build on Windows:
+
+       jc -v
+       echo a: 1 | jc --yaml
+       ipconfig /all | jc --ipconfig -p
+       systeminfo | jc --systeminfo -p
+
+`launcher-windows.c` is compiled with MinGW but against the Universal C
+Runtime, the C library `python314.dll` uses, and it only calls CPython's
+API, so the two never share a C library object.
+
+### Updating
+
+`update-pins.sh` pins the Windows CPython along with the others. llvm-mingw
+is pinned separately and rarely needs a change; to move to another release,
+give it as a third argument:
+
+    static/update-pins.sh 20261001 3.14.8 20261006
+
+The `mingw` lines do not count towards the Linux core's name, so changing
+them does not ask for a new core.

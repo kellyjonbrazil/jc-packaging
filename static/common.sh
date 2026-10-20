@@ -91,6 +91,13 @@ with zstd.open(sys.argv[1], "rb") as z, tarfile.open(fileobj=z, mode="r|") as t:
     t.extractall(sys.argv[2], filter="tar")
 ' "$file" "$dir" || exit 1
                 ;;
+            *.tar.xz)
+                "$PYTHON" -I -c '
+import sys, tarfile
+with tarfile.open(sys.argv[1], mode="r|xz") as t:
+    t.extractall(sys.argv[2], filter="tar")
+' "$file" "$dir" || exit 1
+                ;;
             *)
                 echo "error: do not know how to unpack ${url##*/}" >&2
                 exit 1
@@ -105,10 +112,11 @@ with zstd.open(sys.argv[1], "rb") as z, tarfile.open(fileobj=z, mode="r|") as t:
 # Linux only: the core is the part of the binary that depends on the Python
 # version but not on jc (see build-core.py). Its name changes whenever
 # something that goes into it does: the pins for this machine, the launcher,
-# or the script that builds it.
+# or the script that builds it. The mingw pin only builds the Windows
+# executable, so it is not part of the name.
 CORE_NAME=core-$TRIPLE-$(
     {
-        awk -v triple="$TRIPLE" '$1 == triple' "$HERE/distributions.txt"
+        awk -v triple="$TRIPLE" '$1 == triple && $2 != "mingw"' "$HERE/distributions.txt"
         cat "$HERE/launcher.c" "$HERE/build-core.py"
     } | $SHA256 | cut -c1-16
 )
